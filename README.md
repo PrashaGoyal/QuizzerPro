@@ -1,1 +1,1 @@
-# QuizMaker
+# QuizzerPro
