@@ -1,0 +1,82 @@
+/***************************NavBar**************************/
+
+.navbar {
+  background-color: #161e54;
+}
+
+.navbar-expand .navbar-nav {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  text-align: center;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  width: 5rem;
+}
+
+.navbar-light .navbar-brand,
+.navbar-light .navbar-nav .nav-link {
+  color: #eeeeee;
+}
+
+.navbar-light .navbar-brand:hover,
+.navbar-light .navbar-brand:focus,
+.navbar-light .navbar-brand:visited,
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link:focus,
+.navbar-light .navbar-nav .nav-link:visited {
+  color: #eeeeee;
+  font-weight: 500;
+}
+
+.nav-link {
+  color: #ffffff;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: #eeeeee;
+}
+
+/***************************HomePage Panels**************************/
+
+.panel-1 {
+  background-color: #ff9b6a;
+}
+
+.panel-2 {
+  background-color: #ff5151;
+}
+
+h1.fst-italic {
+  font-weight: 500;
+}
+
+/***************************Buttons**************************/
+
+.btn-red {
+  background-color: #f8485e;
+  border-color: #f8485e;
+}
+
+.btn-red-outline {
+  border-color: #f8485e;
+  color: #f8485e;
+}
+
+.btn-red:hover,
+.btn-red:active,
+.btn-red-outline:hover,
+.btn-red-outline:active {
+  background-color: #ee2d44;
+  border-color: #ee2d44;
+}
+
+.btn-red:focus,
+.btn-red-outline:focus {
+  border-color: #ee2d44;
+  background-color: #ee2d44;
+  color: #ffffff;
+  box-shadow: none;
+}

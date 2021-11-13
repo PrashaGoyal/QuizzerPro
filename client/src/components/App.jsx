@@ -1,5 +1,6 @@
 import React from "react";
 
+// importing react components
 import NavBar from "./NavBar";
 import HomePage from "./HomePage";
 

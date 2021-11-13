@@ -4,6 +4,7 @@ import { Row, Col, Image } from "react-bootstrap";
 function HomePage() {
   return (
     <div>
+      {/* Panel-1 */}
       <div class="p-5">
         <Row className="container-fluid">
           <Col className="p-5 d-flex align-items-center">
@@ -11,23 +12,37 @@ function HomePage() {
               <h1 class="display-5 fs-1 fst-italic">
                 Create an awesome quiz in minutes
               </h1>
-              <p class="col-md-8 fs-5">
+              <p class="fs-5">
                 Simply create your own quiz above to get started for free.
                 Students login to the learning portal to access new quizzes.
               </p>
-              <button class="btn btn-secondary btn-md px-4 me-2" type="button">
+
+              <br />
+
+              {/* If not logged in, show the log-in buttons, else, show the "Get Going" button" */}
+              <button
+                class="btn btn-danger btn-md px-4 me-2 btn-red"
+                type="button"
+              >
                 Sign In
               </button>
+
               <button
-                class="btn btn-outline-secondary btn-md px-4 ms-2"
+                class="btn btn-outline-danger btn-md px-4 ms-2 btn-red-outline"
                 type="button"
               >
                 Sign Up
               </button>
+
               <br />
-              <button class="btn btn-secondary btn-md px-4" type="button">
+
+              {/* If logged in, show this button */}
+              {/* <button
+                class="btn btn-secondary btn-md px-4 btn-red"
+                type="button"
+              >
                 Get Going
-              </button>
+              </button> */}
             </div>
           </Col>
 
@@ -41,7 +56,9 @@ function HomePage() {
         </Row>
       </div>
 
-      <div class="p-5 bg-light">
+      {/* Panel-2 */}
+
+      <div class="p-5 panel-1">
         <Row className="container-fluid">
           <Col className="p-5 d-flex align-items-center">
             <Image
@@ -54,7 +71,7 @@ function HomePage() {
           <Col className="p-5 d-flex align-items-center">
             <div class="px-5">
               <h1 class="display-5 fs-1 fst-italic">Auto Graded</h1>
-              <p class="col-md-8 fs-5">
+              <p class=" fs-5">
                 Students get to know there scores immediately after completing
                 the quiz. No hassle of manually checking the response.
               </p>
