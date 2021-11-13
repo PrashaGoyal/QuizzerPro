@@ -1,5 +1,6 @@
 import React from "react";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 // Material UI icons
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -8,17 +9,21 @@ function NavBar() {
   return (
     <Navbar>
       <Container>
-        <Navbar.Brand href="#home" className="fw-bold fs-3">
-          QuizzerPro
-        </Navbar.Brand>
+        <Link to="/" className="navbar-brand">
+          <Navbar.Brand className="fw-bold fs-3">QuizzerPro</Navbar.Brand>
+        </Link>
+
         <Nav className="me-auto">
-          <Nav.Link href="#home" className="fs-5 nav-item">
+          <Link to="/" className="fs-5 nav-item">
             Home
-          </Nav.Link>
-          <Nav.Link href="#features" className="fs-5 nav-item">
+          </Link>
+
+          <Link to="/quizzes" className="fs-5 nav-item">
             Quizzes
-          </Nav.Link>
+          </Link>
         </Nav>
+
+        {/* Account */}
         <NavDropdown
           title={<AccountCircleIcon fontSize="large" />}
           id="basic-nav-dropdown account-dropdown"
