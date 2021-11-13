@@ -1,5 +1,6 @@
 import React from "react";
 import { Row, Col, Image } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function Quizzes() {
   return (
@@ -15,12 +16,15 @@ function Quizzes() {
             </p>
 
             <br />
-            <button
-              class="btn btn-danger btn-md px-4 me-2 btn-red"
-              type="button"
-            >
-              Sign In to Continue
-            </button>
+
+            <Link to="/signin">
+              <button
+                class="btn btn-danger btn-md px-4 me-2 btn-red"
+                type="button"
+              >
+                Sign In to Continue
+              </button>
+            </Link>
           </div>
         </Col>
 

@@ -1,5 +1,6 @@
 import React from "react";
 import { Row, Col, Image } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function HomePage() {
   return (
@@ -20,19 +21,23 @@ function HomePage() {
               <br />
 
               {/* If not logged in, show the log-in buttons, else, show the "Get Going" button" */}
-              <button
-                class="btn btn-danger btn-md px-4 me-2 btn-red"
-                type="button"
-              >
-                Sign In
-              </button>
+              <Link to="/signin">
+                <button
+                  class="btn btn-danger btn-md px-4 me-2 btn-red"
+                  type="button"
+                >
+                  Sign In
+                </button>
+              </Link>
 
-              <button
-                class="btn btn-outline-danger btn-md px-4 ms-2 btn-red-outline"
-                type="button"
-              >
-                Sign Up
-              </button>
+              <Link to="/signup">
+                <button
+                  class="btn btn-outline-danger btn-md px-4 ms-2 btn-red-outline"
+                  type="button"
+                >
+                  Sign Up
+                </button>
+              </Link>
 
               <br />
 

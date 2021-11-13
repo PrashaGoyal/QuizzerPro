@@ -15,15 +15,15 @@
   width: 5rem;
 }
 
-.navbar-light .navbar-brand,
+.navbar-light a .navbar-brand,
 .navbar-light .navbar-nav .nav-item {
   color: #eeeeee;
   text-decoration: none;
 }
 
-.navbar-light .navbar-brand:hover,
-.navbar-light .navbar-brand:focus,
-.navbar-light .navbar-brand:visited,
+.navbar-light a .navbar-brand:hover,
+.navbar-light a .navbar-brand:focus,
+.navbar-light a .navbar-brand:visited,
 .navbar-light .navbar-nav .nav-item:hover,
 .navbar-light .navbar-nav .nav-item:focus,
 .navbar-light .navbar-nav .nav-item:visited {
@@ -31,13 +31,22 @@
   font-weight: 500;
 }
 
-.nav-link {
+.navbar-light .nav-link {
   color: #ffffff;
 }
 
-.nav-link:hover,
-.nav-link:focus {
+.navbar-light .nav-link:hover,
+.navbar-light .nav-link:focus {
   color: #eeeeee;
+}
+
+.dropdown-item:active {
+  background-color: #999999;
+}
+
+.dropdown-item a {
+  color: #000000;
+  text-decoration: none;
 }
 
 /***************************HomePage Panels**************************/

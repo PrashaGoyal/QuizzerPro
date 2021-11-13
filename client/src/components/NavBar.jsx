@@ -28,7 +28,9 @@ function NavBar() {
           title={<AccountCircleIcon fontSize="large" />}
           id="basic-nav-dropdown account-dropdown"
         >
-          <NavDropdown.Item href="#action/3.1">Sign In</NavDropdown.Item>
+          <NavDropdown.Item>
+            <Link to="/signin">Sign In</Link>
+          </NavDropdown.Item>
         </NavDropdown>
       </Container>
     </Navbar>

@@ -2,18 +2,18 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 // importing react components
-import NavBar from "./NavBar";
-import HomePage from "./HomePage";
-import Quizzes from "./Quizzes";
+import Main from "./Main";
+import SignIn from "./SignIn";
+import SignUp from "./SignUp";
 
 function App() {
   return (
     <div>
-      <NavBar />
-      {/* Frontend routing */}
+      {/* Frontend Routing */}
       <Routes>
-        <Route path="/" element={<HomePage />}></Route>
-        <Route path="/quizzes" element={<Quizzes />}></Route>
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="*" element={<Main />} />
       </Routes>
     </div>
   );
