@@ -96,6 +96,15 @@ h1.fst-italic {
   border-color: #f76c35;
 }
 
+.btn-blue {
+  background-color: #0090e4;
+  border-color: #0090e4;
+}
+
+svg:hover {
+  cursor: pointer;
+}
+
 /***************************Quizzes Table**************************/
 
 .table-teacher tr :nth-child(2) {
@@ -130,6 +139,18 @@ h1.fst-italic {
   width: 7%;
 }
 
-td svg:hover {
+tr:hover td {
+  background-color: #dddddd;
+}
+
+/***************************Quizzes Table**************************/
+
+.add-option {
+  color: #161e54;
+  font-weight: 500;
+}
+
+.add-option:hover {
   cursor: pointer;
+  font-weight: 700;
 }

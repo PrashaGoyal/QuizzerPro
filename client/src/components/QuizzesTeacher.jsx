@@ -16,10 +16,11 @@ function QuizzesTeacher() {
           class="btn btn-danger btn-md px-3 mb-4 btn-orange"
           type="button"
         >
-          + New Test
+          + New Quiz
         </button>
       </Link>
 
+      {/* table displaying the quizzes created by the teacher */}
       <Table responsive className="table-teacher">
         <thead>
           <tr>
@@ -37,7 +38,7 @@ function QuizzesTeacher() {
             <td>
               <OverlayTrigger
                 placement="bottom"
-                overlay={<Tooltip>Rename quiz</Tooltip>}
+                overlay={<Tooltip>Edit quiz</Tooltip>}
               >
                 <DriveFileRenameOutlineIcon />
               </OverlayTrigger>
@@ -57,7 +58,7 @@ function QuizzesTeacher() {
             <td>
               <OverlayTrigger
                 placement="bottom"
-                overlay={<Tooltip>Rename quiz</Tooltip>}
+                overlay={<Tooltip>Edit quiz</Tooltip>}
               >
                 <DriveFileRenameOutlineIcon />
               </OverlayTrigger>
@@ -77,7 +78,7 @@ function QuizzesTeacher() {
             <td>
               <OverlayTrigger
                 placement="bottom"
-                overlay={<Tooltip>Rename quiz</Tooltip>}
+                overlay={<Tooltip>Edit quiz</Tooltip>}
               >
                 <DriveFileRenameOutlineIcon />
               </OverlayTrigger>

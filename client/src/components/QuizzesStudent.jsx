@@ -6,6 +6,7 @@ function QuizzesStudent() {
     <Container fluid className="px-5">
       <h1 class="display-5 fs-3 my-5 fst-italic">My Quizzes</h1>
 
+      {/* table displaying the quizzes assigned to the student */}
       <Table responsive className="table-student">
         <thead>
           <tr>
