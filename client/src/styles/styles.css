@@ -90,3 +90,33 @@ h1.fst-italic {
   color: #ffffff;
   box-shadow: none;
 }
+
+.btn-orange {
+  background-color: #f76c35;
+  border-color: #f76c35;
+}
+
+/***************************Quizzes Table**************************/
+
+tr :nth-child(2),
+tr :nth-child(2) {
+  width: 58%;
+}
+
+tr :nth-child(3),
+tr :nth-child(3) {
+  width: 30%;
+}
+
+tr :nth-child(4),
+tr :nth-child(4) {
+  width: 7%;
+}
+
+td svg:hover {
+  cursor: pointer;
+}
+
+td svg:nth-child(2) {
+  color: #ff5151;
+}

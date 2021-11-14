@@ -10,6 +10,7 @@ function Main() {
   return (
     <div>
       <NavBar />
+      {/* Routing inside the application */}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/quizzes" element={<Quizzes />} />
