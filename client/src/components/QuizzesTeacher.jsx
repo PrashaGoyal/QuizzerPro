@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Table } from "react-bootstrap";
+import { Container, Table, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 // Material UI Icons
@@ -20,7 +20,7 @@ function QuizzesTeacher() {
         </button>
       </Link>
 
-      <Table responsive>
+      <Table responsive className="table-teacher">
         <thead>
           <tr>
             <th>#</th>
@@ -35,8 +35,19 @@ function QuizzesTeacher() {
             <td>Table cell</td>
             <td>Table cell</td>
             <td>
-              <DriveFileRenameOutlineIcon />
-              <DeleteOutlineIcon />
+              <OverlayTrigger
+                placement="bottom"
+                overlay={<Tooltip>Rename quiz</Tooltip>}
+              >
+                <DriveFileRenameOutlineIcon />
+              </OverlayTrigger>
+
+              <OverlayTrigger
+                placement="bottom"
+                overlay={<Tooltip>Delete quiz</Tooltip>}
+              >
+                <DeleteOutlineIcon />
+              </OverlayTrigger>
             </td>
           </tr>
           <tr>
@@ -44,8 +55,19 @@ function QuizzesTeacher() {
             <td>Table cell</td>
             <td>Table cell</td>
             <td>
-              <DriveFileRenameOutlineIcon />
-              <DeleteOutlineIcon />
+              <OverlayTrigger
+                placement="bottom"
+                overlay={<Tooltip>Rename quiz</Tooltip>}
+              >
+                <DriveFileRenameOutlineIcon />
+              </OverlayTrigger>
+
+              <OverlayTrigger
+                placement="bottom"
+                overlay={<Tooltip>Delete quiz</Tooltip>}
+              >
+                <DeleteOutlineIcon />
+              </OverlayTrigger>
             </td>
           </tr>
           <tr>
@@ -53,8 +75,19 @@ function QuizzesTeacher() {
             <td>Table cell</td>
             <td>Table cell</td>
             <td>
-              <DriveFileRenameOutlineIcon />
-              <DeleteOutlineIcon />
+              <OverlayTrigger
+                placement="bottom"
+                overlay={<Tooltip>Rename quiz</Tooltip>}
+              >
+                <DriveFileRenameOutlineIcon />
+              </OverlayTrigger>
+
+              <OverlayTrigger
+                placement="bottom"
+                overlay={<Tooltip>Delete quiz</Tooltip>}
+              >
+                <DeleteOutlineIcon />
+              </OverlayTrigger>
             </td>
           </tr>
         </tbody>

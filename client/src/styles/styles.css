@@ -98,25 +98,38 @@ h1.fst-italic {
 
 /***************************Quizzes Table**************************/
 
-tr :nth-child(2),
-tr :nth-child(2) {
+.table-teacher tr :nth-child(2) {
   width: 58%;
 }
 
-tr :nth-child(3),
-tr :nth-child(3) {
+.table-teacher tr :nth-child(3) {
   width: 30%;
 }
 
-tr :nth-child(4),
-tr :nth-child(4) {
+.table-teacher tr :nth-child(4) {
+  width: 7%;
+}
+
+.table-teacher td svg:nth-child(2) {
+  color: #ff5151;
+}
+
+.table-student tr :nth-child(2) {
+  width: 53%;
+}
+
+.table-student tr :nth-child(3) {
+  width: 25%;
+}
+
+.table-student tr :nth-child(4) {
+  width: 10%;
+}
+
+.table-student tr :nth-child(5) {
   width: 7%;
 }
 
 td svg:hover {
   cursor: pointer;
-}
-
-td svg:nth-child(2) {
-  color: #ff5151;
 }
