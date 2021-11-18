@@ -1,27 +1,26 @@
-// require the "users" model
-const User = require("../models/users.model");
 const bcrypt = require("bcrypt");
+const User = require("../models/users.model");
 
 // CRUD operations for the "users" model
 
 // to create new user during sign-up
-function creatUser(req, res) {
+function createUser(req, res) {
   const newUser = req.body;
 
   // storing the hashed password in the document
   bcrypt.hash(newUser.password, 10, function (err, hashedPassword) {
     newUser.password = hashedPassword;
-  });
 
-  // creating a new User document
-  User.create(newUser, function (err) {
-    if (err) res.status(200).send({ success: false, message: err });
-    else
-      res.status(200).send({
-        success: true,
-        message: "Succesfully created new user.",
-        user: newUser,
-      });
+    // creating a new User document
+    User.create(newUser, function (err) {
+      if (err) res.status(200).send({ success: false, message: err });
+      else
+        res.status(200).send({
+          success: true,
+          message: "Succesfully created new user.",
+          user: newUser,
+        });
+    });
   });
 }
 
@@ -67,4 +66,4 @@ function loginUser(req, res) {
   });
 }
 
-module.exports = { creatUser, loginUser };
+module.exports = { createUser, loginUser };

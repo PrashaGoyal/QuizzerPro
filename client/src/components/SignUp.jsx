@@ -17,6 +17,7 @@ function SignUp() {
               class="form-control"
               id="username"
               placeholder="xyz"
+              name="userName"
             />
             <label for="username">Username</label>
           </div>
@@ -27,6 +28,7 @@ function SignUp() {
               class="form-control"
               id="email"
               placeholder="name@example.com"
+              name="email"
             />
             <label for="email">Email address</label>
           </div>
@@ -37,6 +39,7 @@ function SignUp() {
               class="form-control"
               id="password"
               placeholder="Password"
+              name="password"
             />
             <label for="password">Password</label>
           </div>
@@ -45,10 +48,11 @@ function SignUp() {
             <select
               class="form-select dropdown"
               aria-label="Default select example"
+              name="role"
             >
               <option selected>Select Role</option>
-              <option value="student">Student</option>
-              <option value="teacher">Teacher</option>
+              <option value="Student">Student</option>
+              <option value="Teacher">Teacher</option>
             </select>
           </div>
 

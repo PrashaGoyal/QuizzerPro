@@ -17,6 +17,7 @@ function SignIn() {
               class="form-control"
               id="email"
               placeholder="name@example.com"
+              name="email"
             />
             <label for="email">Email address</label>
           </div>
@@ -27,6 +28,7 @@ function SignIn() {
               class="form-control"
               id="password"
               placeholder="Password"
+              name="password"
             />
             <label for="password">Password</label>
           </div>
