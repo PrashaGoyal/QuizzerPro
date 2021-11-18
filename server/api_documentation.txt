@@ -1,0 +1,12 @@
+API Documentation
+
+Routes: [
+  {
+    path: "localhost:8000/users/signup"
+    desc: register a new user
+  },
+  {
+    path: "localhost:8000/users/signin"
+    desc: login an existing user
+  }
+]
