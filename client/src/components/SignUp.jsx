@@ -8,7 +8,7 @@ function SignUp() {
   return (
     <div class="text-center body">
       <main class="form-signup">
-        <form>
+        <form action="http://localhost:8000/users/signup" method="post">
           <h1 class="h3 mb-4 fw-bold">QuizzerPro</h1>
 
           <div class="form-floating">

@@ -8,7 +8,7 @@ function SignIn() {
   return (
     <div class="text-center body">
       <main class="form-signin">
-        <form>
+        <form action="http://localhost:8000/users/signin" method="post">
           <h1 class="h3 mb-4 fw-bold">QuizzerPro</h1>
 
           <div class="form-floating">
