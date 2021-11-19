@@ -40,6 +40,11 @@
   color: #eeeeee;
 }
 
+.navbar-light .navbar-text {
+  color: #eeeeee;
+  margin-right: 1rem;
+}
+
 .dropdown-item:active {
   background-color: #999999;
 }
@@ -48,6 +53,11 @@
   color: #000000;
   text-decoration: none;
 }
+
+.dropdown-item p{
+  margin-bottom: 0;
+}
+
 
 /***************************HomePage Panels**************************/
 
@@ -61,6 +71,15 @@
 
 h1.fst-italic {
   font-weight: 500;
+}
+
+/***************************Error Message**************************/
+
+#error {
+  color: #ff5151;
+}
+p#error {
+  margin-bottom: 0;
 }
 
 /***************************Buttons**************************/
@@ -143,7 +162,7 @@ tr:hover td {
   background-color: #dddddd;
 }
 
-/***************************Quizzes Table**************************/
+/***************************Edit Quiz**************************/
 
 .add-option {
   color: #161e54;

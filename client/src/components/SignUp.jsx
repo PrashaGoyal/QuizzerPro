@@ -35,6 +35,7 @@ function SignUp() {
         else {
           // set user cookie
           cookies.set("userName", res.data.user.userName, { path: "/" });
+          cookies.set("role", res.data.user.role, { path: "/" });
 
           // to redirect to home page
           setRedirect(true);
@@ -97,6 +98,8 @@ function SignUp() {
               <option value="Teacher">Teacher</option>
             </select>
           </div>
+
+          <p id="error">{errorMsg}</p>
 
           <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">
             Sign Up

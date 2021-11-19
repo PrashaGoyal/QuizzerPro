@@ -11,7 +11,10 @@ function QuizzesStatic() {
             <h1 class="display-5 fs-1 fst-italic">Just One More Step!</h1>
             <p class="fs-5">
               Sign In to QuizzerPro to create your own quiz or enjoy answering
-              some of them.😉
+              some of them.
+              <span role="img" aria-label="wink emoji">
+                😉
+              </span>
             </p>
 
             <br />

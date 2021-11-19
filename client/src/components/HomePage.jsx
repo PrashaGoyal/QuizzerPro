@@ -1,8 +1,11 @@
 import React from "react";
 import { Row, Col, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Cookies from "universal-cookie";
 
 function HomePage() {
+  const cookies = new Cookies();
+
   return (
     <div>
       {/* Panel-1 */}
@@ -17,37 +20,42 @@ function HomePage() {
                 Simply create your own quiz above to get started for free.
                 Students login to the learning portal to access new quizzes.
               </p>
-
               <br />
 
-              {/* If not logged in, show the log-in buttons, else, show the "Get Going" button" */}
-              <Link to="/signin">
-                <button
-                  class="btn btn-danger btn-md px-4 me-2 btn-red"
-                  type="button"
-                >
-                  Sign In
-                </button>
-              </Link>
-
-              <Link to="/signup">
-                <button
-                  class="btn btn-outline-danger btn-md px-4 ms-2 btn-red-outline"
-                  type="button"
-                >
-                  Sign Up
-                </button>
-              </Link>
+              {/* If logged in, show the "Get Going" button", else, show the log-in buttons. */}
+              {cookies.get("userName") ? (
+                // If logged in, show this button
+                <Link to="/quizzes">
+                  <button
+                    class="btn btn-secondary btn-md px-4 btn-red"
+                    type="button"
+                  >
+                    Get Going
+                  </button>
+                </Link>
+              ) : (
+                // If not logged in, show the log-in buttons
+                <span>
+                  <Link to="/signin">
+                    <button
+                      class="btn btn-danger btn-md px-4 me-2 btn-red"
+                      type="button"
+                    >
+                      Sign In
+                    </button>
+                  </Link>
+                  <Link to="/signup">
+                    <button
+                      class="btn btn-outline-danger btn-md px-4 ms-2 btn-red-outline"
+                      type="button"
+                    >
+                      Sign Up
+                    </button>
+                  </Link>
+                </span>
+              )}
 
               <br />
-
-              {/* If logged in, show this button */}
-              {/* <button
-                class="btn btn-secondary btn-md px-4 btn-red"
-                type="button"
-              >
-                Get Going
-              </button> */}
             </div>
           </Col>
 

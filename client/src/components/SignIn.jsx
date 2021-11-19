@@ -33,6 +33,7 @@ function SignIn() {
         else {
           // set user cookie
           cookies.set("userName", res.data.user.userName, { path: "/" });
+          cookies.set("role", res.data.user.role, { path: "/" });
 
           // to redirect to home page
           setRedirect(true);
@@ -72,6 +73,8 @@ function SignIn() {
             />
             <label for="password">Password</label>
           </div>
+
+          <p id="error">{errorMsg}</p>
 
           <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">
             Sign In
