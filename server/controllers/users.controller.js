@@ -1,7 +1,10 @@
 const bcrypt = require("bcrypt");
 const User = require("../models/users.model");
 
-// CRUD operations for the "users" model
+// importing the axios package
+const axios = require("axios");
+
+// operations performed on the "users" model
 
 // to create new user during sign-up
 function createUser(req, res) {
@@ -47,15 +50,39 @@ function createUser(req, res) {
           else res.status(200).send({ success: false, message: err });
         }
         // if there is no error, the document is successfully created
-        else
+        else {
+          // API call to create a new entry in either the "students" model or the "teachers" model
+          if (newUser.role === "Student") createStudent(req, res);
+          else if (newUser.role === "Teacher") createTeacher(req, res);
+
+          // success status if nothing goes wrong
           res.status(200).send({
             success: true,
             message: "Succesfully created new user.",
             user: newUser,
           });
+        }
       });
     });
   }
+}
+
+// to create a new entry in the "students" model
+function createStudent(req, res) {}
+
+// to create a new entry in the "teachers" model
+function createTeacher(req, res) {
+  axios
+    .post("http://localhost:8000/teachers", {
+      userName: req.body.userName,
+    })
+    .then(function (response) {
+      if (!response.data.success)
+        res
+          .status(200)
+          .send({ success: false, message: response.data.message });
+      else return;
+    });
 }
 
 // to login the user
