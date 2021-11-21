@@ -2,11 +2,83 @@ API Documentation
 
 Routes: [
   {
-    path: "localhost:8000/users/signup"
+    path: "localhost:8000/users/signup",
+    method: POST,
     desc: register a new user
   },
   {
-    path: "localhost:8000/users/signin"
+    path: "localhost:8000/users/signin",
+    method: POST,
     desc: login an existing user
+  },
+  {
+    path: "localhost:8000/teachers",
+    method: POST,
+    desc: create a new teacher when a user signs up as a teacher
+  },
+  {
+    path: "localhost:8000/teachers/:teacherUserName/quizzes",
+    method: POST,
+    desc: add quiz to the teacher's document when quiz is created
+  },
+  {
+    path: "localhost:8000/teachers/:teacherUserName/quizzes/:quizID",
+    method: DELETE,
+    desc: delete the quiz from the teacher's document
+  },
+  {
+    path: "localhost:8000/students",
+    method: GET,
+    desc: to fetch the details of all students
+  },
+  {
+    path: "localhost:8000/students",
+    method: POST,
+    desc: create a new student when a new user signs up as a student
+  },
+  {
+    path: "localhost:8000/students/:studentUserName/quizzes",
+    method: POST,
+    desc: add quiz to the teacher's document when the quiz is assigned
+  },
+  {
+    path: "localhost:8000/students/:studentUserName/quizzes/:quizID",
+    method: DELETE,
+    desc: delete the quiz from the student's document
+  },
+  {
+    path: "localhost:8000/students/:studentUserName/quizzes/:quizID",
+    method: PATCH,
+    desc: update the quiz details when the quiz is attempted by the student
+  },
+  {
+    path: "localhost:8000/quizzes",
+    method: POST,
+    desc: create a new quiz
+  },
+  {
+    path: "localhost:8000/quizzes/:quizID",
+    method: GET,
+    desc: fetch the details of quiz
+  },
+  {
+    path: "localhost:8000/quizzes/:quizID",
+    method: PATCH,
+    desc: update the quiz details
+  },
+  {
+    path: "localhost:8000/quizzes/:quizID",
+    method: DELETE,
+    desc: delete the quiz
+  },
+  {
+    path: "localhost:8000/quizzes/:quizID/assignees",
+    method: POST,
+    desc: add assignee to the quiz
+  },
+  {
+    path: "localhost:8000/quizzes/:quizID/assignees/:assigneeUserName",
+    method: DELETE,
+    desc: to remove the assignee from the quiz
   }
 ]
