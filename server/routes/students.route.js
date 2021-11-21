@@ -3,8 +3,13 @@ const studentsController = require("../controllers/students.controller");
 
 const router = express.Router();
 
-// route for adding a new student in the DB
-router.route("/").post(studentsController.createStudent);
+router
+  .route("/")
+  // route for fetching the details of all the students
+  .get(studentsController.getAllStudents)
+
+  // route for adding a new student in the DB
+  .post(studentsController.createStudent);
 
 // route for adding the quizID of the quiz assigned to the student
 router.route("/:studentUserName/quizzes").post(studentsController.addQuiz);

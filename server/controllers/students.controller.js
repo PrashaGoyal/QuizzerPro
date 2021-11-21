@@ -20,6 +20,19 @@ function createStudent(req, res) {
   });
 }
 
+// to get the details of all the students
+function getAllStudents(req, res) {
+  Student.find({}, function (err, foundStudents) {
+    if (err) res.status(200).send({ success: false, message: err });
+    else
+      res.status(200).send({
+        success: true,
+        message: "Successfully retrieved all students.",
+        students: foundStudents,
+      });
+  });
+}
+
 // to add the quiz details of the quiz assigned to the student
 function addQuiz(req, res) {
   const userName = req.params.studentUserName;
@@ -97,4 +110,10 @@ function updateQuiz(req, res) {
   );
 }
 
-module.exports = { createStudent, addQuiz, deleteQuiz, updateQuiz };
+module.exports = {
+  createStudent,
+  getAllStudents,
+  addQuiz,
+  deleteQuiz,
+  updateQuiz,
+};
