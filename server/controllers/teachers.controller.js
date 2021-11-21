@@ -28,6 +28,7 @@ function addQuiz(req, res) {
   Teacher.findOneAndUpdate(
     { userName: userName },
     { $push: { quizIDs: newQuizID } },
+    { returnDocument: 'after' },
     function (err, updatedTeacher) {
       if (err) res.status(200).send({ success: false, message: err });
       else
@@ -40,4 +41,25 @@ function addQuiz(req, res) {
   );
 }
 
-module.exports = { createTeacher, addQuiz };
+// to delete the quizID of quiz deleted
+function deleteQuiz(req, res) {
+  const userName = req.params.teacherUserName;
+  const deletedQuizID = req.params.quizID;
+
+  Teacher.findOneAndUpdate(
+    { userName: userName },
+    { $pull: { quizIDs: deletedQuizID } },
+    { returnDocument: 'after' },
+    function (err, updatedTeacher) {
+      if (err) res.status(200).send({ success: false, message: err });
+      else
+        res.status(200).send({
+          success: true,
+          message: "Successfully deleted the quiz from the teacher's document.",
+          user: updatedTeacher,
+        });
+    }
+  );
+}
+
+module.exports = { createTeacher, addQuiz, deleteQuiz };

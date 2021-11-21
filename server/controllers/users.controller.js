@@ -68,7 +68,20 @@ function createUser(req, res) {
 }
 
 // to create a new entry in the "students" model
-function createStudent(req, res) {}
+function createStudent(req, res) {
+  axios
+    .post("http://localhost:8000/students", { userName: req.body.userName })
+    .then(function (response) {
+      if (!response.data.success)
+        res
+          .status(200)
+          .send({ success: false, message: response.data.message });
+      else return;
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+}
 
 // to create a new entry in the "teachers" model
 function createTeacher(req, res) {
@@ -82,6 +95,9 @@ function createTeacher(req, res) {
           .status(200)
           .send({ success: false, message: response.data.message });
       else return;
+    })
+    .catch(function (err) {
+      console.log(err);
     });
 }
 

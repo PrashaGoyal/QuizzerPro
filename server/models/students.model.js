@@ -11,7 +11,7 @@ const studentSchema = new mongoose.Schema({
     type: [
       {
         quizID: {
-          type: mongoose.ObjectId,
+          type: Number,
           required: true,
         },
         attempted: {
@@ -20,6 +20,7 @@ const studentSchema = new mongoose.Schema({
         },
         score: {
           type: Number,
+          required: true, // '0' when quiz is not attempted
         },
       },
     ],
