@@ -11,7 +11,7 @@ const studentSchema = new mongoose.Schema({
     type: [
       {
         quizID: {
-          type: Number,
+          type: mongoose.ObjectId,
           required: true,
         },
         attempted: {
