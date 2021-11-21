@@ -31,23 +31,24 @@ function createUser(req, res) {
 
       // creating a new User document
       User.create(newUser, function (err) {
-        // 11000 is the error code for violation of "unique" validation
-        if (err && err.code === 11000) {
-          // if the username alreasy exists
-          if (err.keyPattern.userName)
-            res.status(200).send({
-              success: false,
-              message:
-                "The entered Username already exists. Please use a different one.",
-            });
-          // if the email id already exists
-          else if (err.keyPattern.email)
-            res.status(200).send({
-              success: false,
-              message:
-                "The entered Email Id already exists. Please use a different one.",
-            });
-          else res.status(200).send({ success: false, message: err });
+        if (err) {
+          // 11000 is the error code for violation of "unique" validation
+          if (err.code === 11000) {
+            // if the username alreasy exists
+            if (err.keyPattern.userName)
+              res.status(200).send({
+                success: false,
+                message:
+                  "The entered Username already exists. Please use a different one.",
+              });
+            // if the email id already exists
+            else if (err.keyPattern.email)
+              res.status(200).send({
+                success: false,
+                message:
+                  "The entered Email Id already exists. Please use a different one.",
+              });
+          } else res.status(200).send({ success: false, message: err });
         }
         // if there is no error, the document is successfully created
         else {
@@ -72,10 +73,7 @@ function createStudent(req, res) {
   axios
     .post("http://localhost:8000/students", { userName: req.body.userName })
     .then(function (response) {
-      if (!response.data.success)
-        res
-          .status(200)
-          .send({ success: false, message: response.data.message });
+      if (!response.data.success) res.status(200).send(response.data);
       else return;
     })
     .catch(function (err) {
@@ -88,10 +86,7 @@ function createTeacher(req, res) {
   axios
     .post("http://localhost:8000/teachers", { userName: req.body.userName })
     .then(function (response) {
-      if (!response.data.success)
-        res
-          .status(200)
-          .send({ success: false, message: response.data.message });
+      if (!response.data.success) res.status(200).send(response.data);
       else return;
     })
     .catch(function (err) {
