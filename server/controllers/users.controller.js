@@ -86,9 +86,7 @@ function createStudent(req, res) {
 // to create a new entry in the "teachers" model
 function createTeacher(req, res) {
   axios
-    .post("http://localhost:8000/teachers", {
-      userName: req.body.userName,
-    })
+    .post("http://localhost:8000/teachers", { userName: req.body.userName })
     .then(function (response) {
       if (!response.data.success)
         res
