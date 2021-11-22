@@ -34,7 +34,13 @@ function createQuiz(req, res) {
         addQuizToAuthor(req, res, createdQuiz._id);
 
         // success status if nothing goes wrong
-        res.status(200).send({ success: true, quiz: createdQuiz });
+        res
+          .status(200)
+          .send({
+            success: true,
+            message: "Successfully created the quiz.",
+            quiz: createdQuiz,
+          });
       }
     });
   }
