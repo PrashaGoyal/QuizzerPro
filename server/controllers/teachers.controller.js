@@ -20,6 +20,21 @@ function createTeacher(req, res) {
   });
 }
 
+// to get the details of a particular teacher
+function getTeacher(req, res) {
+  const userName = req.params.teacherUserName;
+
+  Teacher.findOne({ userName: userName }, function (err, foundTeacher) {
+    if (err) res.status(200).send({ success: false, message: err });
+    else
+      res.status(200).send({
+        success: true,
+        message: "Successfully fetched the teacher's details.",
+        user: foundTeacher,
+      });
+  });
+}
+
 // to add the quizID of quiz created
 function addQuiz(req, res) {
   const userName = req.params.teacherUserName;
@@ -28,7 +43,7 @@ function addQuiz(req, res) {
   Teacher.findOneAndUpdate(
     { userName: userName },
     { $push: { quizIDs: newQuizID } },
-    { returnDocument: 'after' },
+    { returnDocument: "after" },
     function (err, updatedTeacher) {
       if (err) res.status(200).send({ success: false, message: err });
       else
@@ -49,7 +64,7 @@ function deleteQuiz(req, res) {
   Teacher.findOneAndUpdate(
     { userName: userName },
     { $pull: { quizIDs: deletedQuizID } },
-    { returnDocument: 'after' },
+    { returnDocument: "after" },
     function (err, updatedTeacher) {
       if (err) res.status(200).send({ success: false, message: err });
       else
@@ -62,4 +77,4 @@ function deleteQuiz(req, res) {
   );
 }
 
-module.exports = { createTeacher, addQuiz, deleteQuiz };
+module.exports = { createTeacher, getTeacher, addQuiz, deleteQuiz };

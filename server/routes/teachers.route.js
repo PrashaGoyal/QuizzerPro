@@ -6,6 +6,9 @@ const router = express.Router();
 // route for adding a new teacher in the DB
 router.route("/").post(teachersController.createTeacher);
 
+// route for fetching the details of a teacher
+router.route("/:teacherUserName").get(teachersController.getTeacher);
+
 // route for adding the quizID of new quiz created by a teacher
 router.route("/:teacherUserName/quizzes").post(teachersController.addQuiz);
 
