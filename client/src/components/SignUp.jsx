@@ -99,7 +99,7 @@ function SignUp() {
             </select>
           </div>
 
-          <p id="error">{errorMsg}</p>
+          <p class="error">{errorMsg}</p>
 
           <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">
             Sign Up

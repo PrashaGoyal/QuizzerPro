@@ -12,7 +12,6 @@ function Quizzes() {
   return (
     <div>
       {/* If not logged in, display the static page directing to log-in. */}
-      {console.log(cookies.get("role"))}
       {!cookies.get("role") && <QuizzesStatic />}
       {/* If logged in as a 'Teacher', show the teacher's dashboard. */}
       {cookies.get("role") === "Teacher" && <QuizzesTeacher />}

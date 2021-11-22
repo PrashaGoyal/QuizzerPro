@@ -75,10 +75,10 @@ h1.fst-italic {
 
 /***************************Error Message**************************/
 
-#error {
+.error {
   color: #ff5151;
 }
-p#error {
+p.error {
   margin-bottom: 0;
 }
 
@@ -127,18 +127,22 @@ svg:hover {
 /***************************Quizzes Table**************************/
 
 .table-teacher tr :nth-child(2) {
-  width: 58%;
+  width: 65%;
 }
 
 .table-teacher tr :nth-child(3) {
-  width: 30%;
+  width: 10%;
 }
 
 .table-teacher tr :nth-child(4) {
-  width: 7%;
+  width: 10%;
 }
 
-.table-teacher td svg:nth-child(2) {
+.table-teacher tr :nth-child(5) {
+  width: 10%;
+}
+
+.table-teacher tr td:nth-child(5) {
   color: #ff5151;
 }
 
