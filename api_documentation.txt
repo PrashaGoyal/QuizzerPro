@@ -2,27 +2,32 @@ API Documentation
 
 Routes: [
   {
-    path: "localhost:8000/users/signup",
+    path: "localhost:8000/users/signup", #00ff00
     method: POST,
     desc: register a new user
   },
   {
-    path: "localhost:8000/users/signin",
+    path: "localhost:8000/users/signin", #00ff00
     method: POST,
     desc: login an existing user
   },
   {
-    path: "localhost:8000/teachers",
+    path: "localhost:8000/teachers", #00ff00
     method: POST,
     desc: create a new teacher when a user signs up as a teacher
   },
   {
-    path: "localhost:8000/teachers/:teacherUserName/quizzes",
+    path: "localhost:8000/teachers/:teacherUserName", #00ff00
+    method: GET,
+    desc: get the details of a particular teacher
+  },
+  {
+    path: "localhost:8000/teachers/:teacherUserName/quizzes", #00ff00
     method: POST,
     desc: add quiz to the teacher's document when quiz is created
   },
   {
-    path: "localhost:8000/teachers/:teacherUserName/quizzes/:quizID",
+    path: "localhost:8000/teachers/:teacherUserName/quizzes/:quizID", #00ff00
     method: DELETE,
     desc: delete the quiz from the teacher's document
   },
@@ -32,19 +37,19 @@ Routes: [
     desc: to fetch the details of all students
   },
   {
-    path: "localhost:8000/students",
+    path: "localhost:8000/students", #00ff00
     method: POST,
     desc: create a new student when a new user signs up as a student
   },
   {
-    path: "localhost:8000/students/:studentUserName/quizzes",
+    path: "localhost:8000/students/:studentUserName/quizzes", #00ff00
     method: POST,
-    desc: add quiz to the teacher's document when the quiz is assigned
+    desc: add quiz to the student's document when the quiz is assigned
   },
   {
-    path: "localhost:8000/students/:studentUserName/quizzes/:quizID",
+    path: "localhost:8000/students/:studentUserName/quizzes/:quizID", #00ff00
     method: DELETE,
-    desc: delete the quiz from the student's document
+    desc: delete the quiz from the student's document when the student is removed from the assignee list
   },
   {
     path: "localhost:8000/students/:studentUserName/quizzes/:quizID",
@@ -52,7 +57,7 @@ Routes: [
     desc: update the quiz details when the quiz is attempted by the student
   },
   {
-    path: "localhost:8000/quizzes",
+    path: "localhost:8000/quizzes", #00ff00
     method: POST,
     desc: create a new quiz
   },
