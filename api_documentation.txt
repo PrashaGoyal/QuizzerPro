@@ -42,6 +42,11 @@ Routes: [
     desc: create a new student when a new user signs up as a student
   },
   {
+    path: "localhost:8000/students/:studentUserName", #00ff00
+    method: GET,
+    desc: to fetch the details of a particular student
+  }
+  {
     path: "localhost:8000/students/:studentUserName/quizzes", #00ff00
     method: POST,
     desc: add quiz to the student's document when the quiz is assigned
@@ -62,7 +67,7 @@ Routes: [
     desc: create a new quiz
   },
   {
-    path: "localhost:8000/quizzes/:quizID",
+    path: "localhost:8000/quizzes/:quizID", #00ff00
     method: GET,
     desc: fetch the details of quiz
   },
