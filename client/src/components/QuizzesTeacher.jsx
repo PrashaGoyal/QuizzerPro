@@ -20,7 +20,7 @@ function QuizzesTeacher() {
 
   const [nameQuizModalShow, setNameQuizModalShow] = React.useState(false); // to set the show state of the "NameQuiz" modal
   const [deleteConfirmationModalShow, setDeleteConfirmationModalShow] =
-    React.useState(false); // to set the show statue of the "DeleteConfirmation" Modal
+    React.useState(false); // to set the show state of the "DeleteConfirmation" Modal
 
   const [errorMsg, setErrorMsg] = React.useState(""); // to store the error msg, if any
   const [quizzes, setQuizzes] = React.useState([]); // to store the quiz details of all the quizzes created by the teacher
@@ -119,7 +119,7 @@ function QuizzesTeacher() {
       <DeleteConfirmationModal
         item="quiz"
         itemidentifier={quizIDToDelete}
-        deleteQuizHandler={deleteQuizHandler}
+        deleteItem={deleteQuizHandler}
         show={deleteConfirmationModalShow}
         onHide={() => setDeleteConfirmationModalShow(false)}
       />
@@ -148,7 +148,7 @@ function QuizzesTeacher() {
                 <td>{index + 1}</td>
                 <td>{quiz.quizName}</td>
                 <td>
-                  <Link to={`/quizzes/${quiz.quizName}`}>
+                  <Link to={`/quizzes/${quiz.quizName}`} state={{ quiz: quiz }}>
                     <OverlayTrigger
                       placement="bottom"
                       overlay={<Tooltip>Edit quiz</Tooltip>}
@@ -159,12 +159,14 @@ function QuizzesTeacher() {
                 </td>
 
                 <td>
-                  <OverlayTrigger
-                    placement="bottom"
-                    overlay={<Tooltip>Edit assignee list</Tooltip>}
-                  >
-                    <ListAltIcon />
-                  </OverlayTrigger>
+                  <Link to={`/quizzes/${quiz.quizName}/assignees`} state={{ quiz: quiz }}>
+                    <OverlayTrigger
+                      placement="bottom"
+                      overlay={<Tooltip>Edit assignee list</Tooltip>}
+                    >
+                      <ListAltIcon />
+                    </OverlayTrigger>
+                  </Link>
                 </td>
 
                 <td>

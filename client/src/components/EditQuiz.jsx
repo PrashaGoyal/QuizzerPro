@@ -1,14 +1,19 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import { Container, Form } from "react-bootstrap";
 
 // Material UI icons
 import EditIcon from "@mui/icons-material/Edit";
 
 function EditQuiz() {
+  // to access the data passed to the route
+  const location = useLocation();
+  const quiz = location.state.quiz;
+
   return (
     <Container fluid className="px-5">
       <h1 class="display-5 fs-3 my-5 fst-italic">
-        Quiz Name <EditIcon />
+        {quiz.quizName} <EditIcon />
       </h1>
 
       <Form>

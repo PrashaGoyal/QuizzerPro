@@ -10,7 +10,9 @@ function NameQuizModal(props) {
   // to display the error msg, if any
   const [errorMsg, setErrorMsg] = React.useState("");
   // to store the redirect status. If quiz is created successfully, redirect to the EditQuiz page.
-  const [redirectPath, setRedirectPath] = React.useState("");
+  const [redirect, setRedirect] = React.useState("");
+  // to store the details of the created quiz
+  const [createdQuiz, setCreatedQuiz] = React.useState({});
 
   const cookies = new Cookies();
 
@@ -32,8 +34,8 @@ function NameQuizModal(props) {
         else {
           // if successfully created, close the modal
           setErrorMsg("");
-          props.onHide();
-          setRedirectPath(quizName);
+          setCreatedQuiz(response.data.quiz);
+          setRedirect(true);
         }
       })
       .catch(function (err) {
@@ -44,7 +46,13 @@ function NameQuizModal(props) {
       });
   }
 
-  if (redirectPath) return <Navigate to={`/quizzes/${redirectPath}`} />;
+  if (redirect)
+    return (
+      <Navigate
+        to={`/quizzes/${createdQuiz.quizName}`}
+        state={{ quiz: createdQuiz }}
+      />
+    );
 
   return (
     <Modal
