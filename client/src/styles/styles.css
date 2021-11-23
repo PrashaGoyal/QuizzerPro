@@ -181,3 +181,9 @@ tr:hover td {
   cursor: pointer;
   font-weight: 700;
 }
+
+/***************************Modals**************************/
+
+#contained-modal-title-deleteconfirmation {
+  color: #ff5151;
+}

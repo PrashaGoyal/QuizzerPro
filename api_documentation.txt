@@ -72,7 +72,7 @@ Routes: [
     desc: update the quiz details
   },
   {
-    path: "localhost:8000/quizzes/:quizID",
+    path: "localhost:8000/quizzes/:quizID", #00ff00
     method: DELETE,
     desc: delete the quiz
   },

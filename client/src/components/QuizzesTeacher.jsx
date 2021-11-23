@@ -5,6 +5,7 @@ import Cookies from "universal-cookie";
 
 // import react components
 import NameQuizModal from "./NameQuizModal";
+import DeleteConfirmationModal from "./DeleteConfirmationModal";
 
 // Material UI Icons
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
@@ -18,8 +19,12 @@ function QuizzesTeacher() {
   const cookies = new Cookies();
 
   const [nameQuizModalShow, setNameQuizModalShow] = React.useState(false); // to set the show state of the "NameQuiz" modal
+  const [deleteConfirmationModalShow, setDeleteConfirmationModalShow] =
+    React.useState(false); // to set the show statue of the "DeleteConfirmation" Modal
+
   const [errorMsg, setErrorMsg] = React.useState(""); // to store the error msg, if any
   const [quizzes, setQuizzes] = React.useState([]); // to store the quiz details of all the quizzes created by the teacher
+  const [quizIDToDelete, setQuizIDToDelete] = React.useState(""); // to store the quizID to be deleted. This is sent to the DeleteConfirmation Modal
 
   // for events that take place on loading component
   React.useEffect(() => {
@@ -85,6 +90,9 @@ function QuizzesTeacher() {
         console.log(err);
         alert("Unable to delete the quiz. Please try again later.");
       });
+
+    // hide the DeleteConfirmation Modal
+    setDeleteConfirmationModalShow(false);
   }
 
   return (
@@ -105,6 +113,15 @@ function QuizzesTeacher() {
       <NameQuizModal
         show={nameQuizModalShow}
         onHide={() => setNameQuizModalShow(false)}
+      />
+
+      {/* modal pop-up to confirm the quiz deletion */}
+      <DeleteConfirmationModal
+        item="quiz"
+        itemidentifier={quizIDToDelete}
+        deleteQuizHandler={deleteQuizHandler}
+        show={deleteConfirmationModalShow}
+        onHide={() => setDeleteConfirmationModalShow(false)}
       />
 
       {/* if there is some error, display the msg; else render the table of quizzes */}
@@ -156,8 +173,10 @@ function QuizzesTeacher() {
                     overlay={<Tooltip>Delete quiz</Tooltip>}
                   >
                     <DeleteOutlineIcon
-                      onClick={deleteQuizHandler}
-                      value={quiz._id}
+                      onClick={() => {
+                        setQuizIDToDelete(quiz._id); // since the quizID needs to be passed to the DeleteConfirmation Modal
+                        setDeleteConfirmationModalShow(true);
+                      }}
                     />
                   </OverlayTrigger>
                 </td>
