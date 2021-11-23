@@ -7,6 +7,7 @@ import HomePage from "./HomePage";
 import Quizzes from "./Quizzes";
 
 import EditQuiz from "./EditQuiz";
+import QuizAssignees from "./QuizAssignees";
 
 function Main() {
   return (
@@ -17,6 +18,10 @@ function Main() {
         <Route path="/" element={<HomePage />} />
         <Route path="/quizzes" element={<Quizzes />} />
         <Route path="/quizzes/:quizName" element={<EditQuiz />} />
+        <Route
+          path="/quizzes/:quizName/assignees"
+          element={<QuizAssignees />}
+        />
       </Routes>
     </div>
   );
