@@ -54,10 +54,9 @@
   text-decoration: none;
 }
 
-.dropdown-item p{
+.dropdown-item p {
   margin-bottom: 0;
 }
-
 
 /***************************HomePage Panels**************************/
 
@@ -140,6 +139,11 @@ svg:hover {
 
 .table-teacher tr :nth-child(5) {
   width: 10%;
+}
+
+.table-teacher tr a {
+  color: #000000;
+  text-decoration: none;
 }
 
 .table-teacher tr td:nth-child(5) {

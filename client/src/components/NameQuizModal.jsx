@@ -1,4 +1,5 @@
 import React from "react";
+import { Navigate } from "react-router-dom";
 import { Button, Modal } from "react-bootstrap";
 import Cookies from "universal-cookie";
 
@@ -8,6 +9,8 @@ const axios = require("axios");
 function NameQuizModal(props) {
   // to display the error msg, if any
   const [errorMsg, setErrorMsg] = React.useState("");
+  // to store the redirect status. If quiz is created successfully, redirect to the EditQuiz page.
+  const [redirectPath, setRedirectPath] = React.useState("");
 
   const cookies = new Cookies();
 
@@ -30,6 +33,7 @@ function NameQuizModal(props) {
           // if successfully created, close the modal
           setErrorMsg("");
           props.onHide();
+          setRedirectPath(quizName);
         }
       })
       .catch(function (err) {
@@ -39,6 +43,8 @@ function NameQuizModal(props) {
         );
       });
   }
+
+  if (redirectPath) return <Navigate to={`/quizzes/${redirectPath}`} />;
 
   return (
     <Modal

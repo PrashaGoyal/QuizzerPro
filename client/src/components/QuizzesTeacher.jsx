@@ -67,12 +67,6 @@ function QuizzesTeacher() {
     );
   }
 
-  // to handle events on closing the modal
-  function modalOnHideHandler() {
-    setNameQuizModalShow(false);
-    window.location.reload();
-  }
-
   return (
     <Container fluid className="px-5">
       <h1 className="display-5 fs-3 my-5 fst-italic">My Quizzes</h1>
@@ -88,7 +82,10 @@ function QuizzesTeacher() {
       </Link>
 
       {/* modal pop-up to name the quiz being created */}
-      <NameQuizModal show={nameQuizModalShow} onHide={modalOnHideHandler} />
+      <NameQuizModal
+        show={nameQuizModalShow}
+        onHide={() => setNameQuizModalShow(false)}
+      />
 
       {/* if there is some error, display the msg; else render the table of quizzes */}
       {errorMsg ? (
@@ -114,12 +111,14 @@ function QuizzesTeacher() {
                 <td>{index + 1}</td>
                 <td>{quiz.quizName}</td>
                 <td>
-                  <OverlayTrigger
-                    placement="bottom"
-                    overlay={<Tooltip>Edit quiz</Tooltip>}
-                  >
-                    <DriveFileRenameOutlineIcon />
-                  </OverlayTrigger>
+                  <Link to={`/quizzes/${quiz.quizName}`}>
+                    <OverlayTrigger
+                      placement="bottom"
+                      overlay={<Tooltip>Edit quiz</Tooltip>}
+                    >
+                      <DriveFileRenameOutlineIcon />
+                    </OverlayTrigger>
+                  </Link>
                 </td>
 
                 <td>
