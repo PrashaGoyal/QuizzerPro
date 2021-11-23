@@ -123,7 +123,7 @@ svg:hover {
   cursor: pointer;
 }
 
-/***************************Quizzes Table**************************/
+/***************************Tables**************************/
 
 .table-teacher tr :nth-child(2) {
   width: 65%;
@@ -164,6 +164,15 @@ svg:hover {
 
 .table-student tr :nth-child(5) {
   width: 7%;
+}
+
+
+.table-assignee tr :nth-child(2) {
+  width: 70%;
+}
+
+.table-assignee tr :nth-child(3) {
+  width: 20%;
 }
 
 tr:hover td {

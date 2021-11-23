@@ -5,7 +5,7 @@ function DeleteConfirmationModal(props) {
   return (
     <Modal
       {...props}
-      size="lg"
+      size="md"
       aria-labelledby="contained-modal-title-deleteconfirmation"
       id="name-quiz"
       centered
@@ -28,7 +28,7 @@ function DeleteConfirmationModal(props) {
           variant="danger"
           className="btn-red"
           value={props.itemidentifier}
-          onClick={props.deleteQuizHandler}
+          onClick={props.deleteItem}
         >
           Yes
         </Button>

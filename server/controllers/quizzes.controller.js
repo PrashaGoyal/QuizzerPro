@@ -120,7 +120,7 @@ function addAssignee(req, res) {
         res.status(200).send({
           success: true,
           message: "Successfully added the assignee to the quiz document.",
-          user: updatedQuiz,
+          quiz: updatedQuiz,
         });
       }
     }
@@ -162,7 +162,7 @@ function removeAssignee(req, res) {
         res.status(200).send({
           success: true,
           message: "Successfully removed the assignee from the quiz document.",
-          user: updatedQuiz,
+          quiz: updatedQuiz,
         });
       }
     }

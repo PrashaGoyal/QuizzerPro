@@ -32,7 +32,7 @@ Routes: [
     desc: delete the quiz from the teacher's document
   },
   {
-    path: "localhost:8000/students",
+    path: "localhost:8000/students", #00ff00
     method: GET,
     desc: to fetch the details of all students
   },
@@ -77,12 +77,12 @@ Routes: [
     desc: delete the quiz
   },
   {
-    path: "localhost:8000/quizzes/:quizID/assignees",
+    path: "localhost:8000/quizzes/:quizID/assignees", #00ff00
     method: POST,
     desc: add assignee to the quiz
   },
   {
-    path: "localhost:8000/quizzes/:quizID/assignees/:assigneeUserName",
+    path: "localhost:8000/quizzes/:quizID/assignees/:assigneeUserName", #00ff00
     method: DELETE,
     desc: to remove the assignee from the quiz
   }
