@@ -11,6 +11,9 @@ router
   // route for adding a new student in the DB
   .post(studentsController.createStudent);
 
+// route for fetching the details of a student
+router.route("/:studentUserName").get(studentsController.getStudent);
+
 // route for adding the quizID of the quiz assigned to the student
 router.route("/:studentUserName/quizzes").post(studentsController.addQuiz);
 

@@ -33,6 +33,23 @@ function getAllStudents(req, res) {
   });
 }
 
+// to get the details of a particular student
+function getStudent(req, res) {
+  const userName = req.params.studentUserName;
+
+  Student.findOne({ userName: userName }, function (err, foundStudent) {
+    if (err) res.status(200).send({ success: false, message: err });
+    else
+      res
+        .status(200)
+        .send({
+          success: true,
+          message: "Successfully fetched the student's details.",
+          user: foundStudent,
+        });
+  });
+}
+
 // to add the quiz details of the quiz assigned to the student
 function addQuiz(req, res) {
   const userName = req.params.studentUserName;
@@ -113,6 +130,7 @@ function updateQuiz(req, res) {
 module.exports = {
   createStudent,
   getAllStudents,
+  getStudent,
   addQuiz,
   deleteQuiz,
   updateQuiz,
