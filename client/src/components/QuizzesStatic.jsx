@@ -34,7 +34,7 @@ function QuizzesStatic() {
         <Col className="p-5 d-flex align-items-center">
           <Image
             src={"/img/one-more-step.jpeg"}
-            className="d-block mx-auto w-50 "
+            className="d-block mx-auto w-50"
             rounded
           />
         </Col>

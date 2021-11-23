@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { Container, Table, Button } from "react-bootstrap";
+import { Container, Table, Button, Row, Col, Image } from "react-bootstrap";
 
 // importing react components
 import DeleteConfirmationModal from "./DeleteConfirmationModal";
@@ -126,62 +126,75 @@ function QuizAssignees() {
       <DeleteConfirmationModal
         item="assignee"
         itemidentifier={studentUserNameToRemove}
+        itemname={studentUserNameToRemove}
         deleteItem={removeAssigneeHandler}
         show={deleteConfirmationModalShow}
         onHide={() => setDeleteConfirmationModalShow(false)}
       />
 
-      {/* if there is some error, display the msg; else render the student list */}
-      {errorMsg ? (
-        <p className="fs-5">{errorMsg}</p>
-      ) : (
-        <div>
-          <p className="fs-5 fst-italic">
-            Add/Remove students from the assignee list:
-          </p>
+      <Row className="container-fluid">
+        <Col className="align-items-center">
+          {/* if there is some error, display the msg; else render the student list */}
+          {errorMsg ? (
+            <p className="fs-5">{errorMsg}</p>
+          ) : (
+            <div>
+              <p className="fs-5 fst-italic">
+                Add/Remove students from the assignee list:
+              </p>
 
-          <Table responsive className="w-50 table-assignee">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Student Name</th>
-                <th>Add/Remove</th>
-              </tr>
-            </thead>
-            <tbody>
-              {studentList.map((student, index) => (
-                <tr key={student._id}>
-                  <td>{index + 1}</td>
-                  <td>{student.userName}</td>
-                  <td>
-                    {assigneeList.includes(student.userName) ? (
-                      <Button
-                        variant="danger"
-                        className="btn-sm btn-red"
-                        value={student.userName}
-                        onClick={() => {
-                          setStudentUserNameToRemove(student.userName); // since the quizID needs to be passed to the DeleteConfirmation Modal
-                          setDeleteConfirmationModalShow(true);
-                        }}
-                      >
-                        Remove
-                      </Button>
-                    ) : (
-                      <Button
-                        className="btn-sm btn-blue"
-                        value={student.userName}
-                        onClick={addAssigneeHandler}
-                      >
-                        Add
-                      </Button>
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-        </div>
-      )}
+              <Table responsive className="table-assignee">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Student Name</th>
+                    <th>Add/Remove</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {studentList.map((student, index) => (
+                    <tr key={student._id}>
+                      <td>{index + 1}</td>
+                      <td>{student.userName}</td>
+                      <td>
+                        {assigneeList.includes(student.userName) ? (
+                          <Button
+                            variant="danger"
+                            className="btn-sm btn-red"
+                            value={student.userName}
+                            onClick={() => {
+                              setStudentUserNameToRemove(student.userName); // since the quizID needs to be passed to the DeleteConfirmation Modal
+                              setDeleteConfirmationModalShow(true);
+                            }}
+                          >
+                            Remove
+                          </Button>
+                        ) : (
+                          <Button
+                            className="btn-sm btn-blue"
+                            value={student.userName}
+                            onClick={addAssigneeHandler}
+                          >
+                            Add
+                          </Button>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            </div>
+          )}
+        </Col>
+
+        <Col className="p-5 d-flex align-items-center">
+          <Image
+            src={"/img/list.jpeg"}
+            className="d-block mx-auto w-75"
+            rounded
+          />
+        </Col>
+      </Row>
     </Container>
   );
 }

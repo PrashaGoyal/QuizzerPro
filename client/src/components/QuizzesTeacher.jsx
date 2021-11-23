@@ -24,7 +24,9 @@ function QuizzesTeacher() {
 
   const [errorMsg, setErrorMsg] = React.useState(""); // to store the error msg, if any
   const [quizzes, setQuizzes] = React.useState([]); // to store the quiz details of all the quizzes created by the teacher
+
   const [quizIDToDelete, setQuizIDToDelete] = React.useState(""); // to store the quizID to be deleted. This is sent to the DeleteConfirmation Modal
+  const [quizNameToDelete, setQuizNameToDelete] = React.useState(""); // to store the quizName to be deleted.
 
   // for events that take place on loading component
   React.useEffect(() => {
@@ -119,6 +121,7 @@ function QuizzesTeacher() {
       <DeleteConfirmationModal
         item="quiz"
         itemidentifier={quizIDToDelete}
+        itemname={quizNameToDelete}
         deleteItem={deleteQuizHandler}
         show={deleteConfirmationModalShow}
         onHide={() => setDeleteConfirmationModalShow(false)}
@@ -159,7 +162,10 @@ function QuizzesTeacher() {
                 </td>
 
                 <td>
-                  <Link to={`/quizzes/${quiz.quizName}/assignees`} state={{ quiz: quiz }}>
+                  <Link
+                    to={`/quizzes/${quiz.quizName}/assignees`}
+                    state={{ quiz: quiz }}
+                  >
                     <OverlayTrigger
                       placement="bottom"
                       overlay={<Tooltip>Edit assignee list</Tooltip>}
@@ -176,7 +182,8 @@ function QuizzesTeacher() {
                   >
                     <DeleteOutlineIcon
                       onClick={() => {
-                        setQuizIDToDelete(quiz._id); // since the quizID needs to be passed to the DeleteConfirmation Modal
+                        setQuizIDToDelete(quiz._id); // since the quizID and quizName needs to be passed to the DeleteConfirmation Modal
+                        setQuizNameToDelete(quiz.quizName)
                         setDeleteConfirmationModalShow(true);
                       }}
                     />

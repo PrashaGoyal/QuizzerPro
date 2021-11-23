@@ -19,7 +19,10 @@ function DeleteConfirmationModal(props) {
         <p className="mt-2">
           Are your sure you want to
           {/* since we are using the same modal for delete confirmation of "quiz" and "assignee" */}
-          {props.item === "quiz" ? " delete the quiz?" : " remove the student?"}
+          {props.item === "quiz"
+            ? " delete the quiz '"
+            : " remove the student '"}
+          {props.itemname}' ?
         </p>
       </Modal.Body>
 
