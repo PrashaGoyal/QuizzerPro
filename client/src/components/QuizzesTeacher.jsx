@@ -67,6 +67,26 @@ function QuizzesTeacher() {
     );
   }
 
+  // to handle the event of deleting a quiz
+  function deleteQuizHandler(event) {
+    // event.currentTarget contained the element that actually has the event listener
+    const quizID = event.currentTarget.getAttribute("value");
+
+    // API call to delete the quiz
+    axios
+      .delete(`http://localhost:8000/quizzes/${quizID}`)
+      .then(function (response) {
+        if (!response.data.success)
+          alert("Unable to delete the quiz. Please try again later.");
+        // if successfully deleted, remove the deleted quiz from the quizzes array
+        else setQuizzes(quizzes.filter((quiz) => quiz._id !== quizID));
+      })
+      .catch(function (err) {
+        console.log(err);
+        alert("Unable to delete the quiz. Please try again later.");
+      });
+  }
+
   return (
     <Container fluid className="px-5">
       <h1 className="display-5 fs-3 my-5 fst-italic">My Quizzes</h1>
@@ -135,7 +155,10 @@ function QuizzesTeacher() {
                     placement="bottom"
                     overlay={<Tooltip>Delete quiz</Tooltip>}
                   >
-                    <DeleteOutlineIcon />
+                    <DeleteOutlineIcon
+                      onClick={deleteQuizHandler}
+                      value={quiz._id}
+                    />
                   </OverlayTrigger>
                 </td>
               </tr>

@@ -58,18 +58,18 @@ function NameQuizModal(props) {
         <Modal.Title id="contained-modal-title-namequiz">Name Quiz</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p class="mt-2">Choose a unique name for the quiz.</p>
+        <p className="mt-2">Choose a unique name for the quiz.</p>
 
         {/* to take input the name of the quiz */}
         <input
           type="text"
-          class="form-control"
+          className="form-control"
           id="quiz-name"
           placeholder="Quiz Name"
           name="quizName"
         />
 
-        <p class="error">{errorMsg}</p>
+        <p className="error">{errorMsg}</p>
       </Modal.Body>
 
       <Modal.Footer>
