@@ -14,11 +14,11 @@ const quizSchema = new mongoose.Schema({
   questions: {
     type: [
       {
-        questionType: {
-          type: String,
-          required: true,
-          enum: ["radio", "checkbox"],
-        },
+        // questionType: {
+        //   type: String,
+        //   required: true,
+        //   enum: ["radio", "checkbox"],
+        // },
         questionTitle: {
           type: String,
           required: true,

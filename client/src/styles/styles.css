@@ -166,7 +166,6 @@ svg:hover {
   width: 7%;
 }
 
-
 .table-assignee tr :nth-child(2) {
   width: 70%;
 }
@@ -180,6 +179,17 @@ tr:hover td {
 }
 
 /***************************Edit Quiz**************************/
+
+.editable-value {
+  padding-top: 0;
+  padding-bottom: 0;
+  border: none;
+  border-bottom: 1px solid #000000;
+}
+
+.editable-value:focus-visible {
+  outline: none;
+}
 
 .add-option {
   color: #161e54;
