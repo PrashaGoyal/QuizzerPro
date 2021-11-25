@@ -8,10 +8,17 @@ import EditQuestionBlock from "./EditQuestionBlock";
 // Material UI icons
 import EditIcon from "@mui/icons-material/Edit";
 
+// importing the axios package
+const axios = require("axios");
+
 function EditQuiz() {
   // to access the data passed to the route
   const location = useLocation();
 
+  // to display the error msg, if any
+  const [errorMsg, setErrorMsg] = React.useState("");
+  // to display the success msg on successful updation
+  const [successMsgShow, setSuccessMsgShow] = React.useState(false);
   const [editNameShow, setEditNameShow] = React.useState(false); // to store the show state of the edit name input field
   const [quiz, setQuiz] = React.useState(location.state.quiz); // to store the quiz details
   const [questionList, setQuestionList] = React.useState(quiz.questions); // to store the question list
@@ -39,7 +46,10 @@ function EditQuiz() {
   // to handle changes in question details, other than options details change
   function handleQuestionDetailsChange(event) {
     const questionId = event.target.getAttribute("questionid"); // gives the index of the question in the list
-    const { name, value } = event.target;
+    let { name, value } = event.target;
+
+    // parse marks to integer
+    if (name === "marks") value = parseInt(value);
 
     // if the questionId is '-1', the change is made in the new question
     if (questionId === "-1")
@@ -136,7 +146,72 @@ function EditQuiz() {
   // to handle addition of a question block
   function handleAddQuestion(event) {
     event.preventDefault();
-    console.log(newQuestion);
+
+    // validation checks
+
+    // check for empty question
+    if (newQuestion.questionTitle === "")
+      setErrorMsg("Please enter the question.");
+    // check if no correct options have been selected
+    else if (
+      newQuestion.options.filter((option) => option.isCorrect === true)
+        .length === 0
+    )
+      setErrorMsg("Please select one or more correct options.");
+    // check if marks have been alloted
+    else if (newQuestion.marks === -1)
+      setErrorMsg("Please allot marks to the question.");
+    // if all validation checks pass, push the question to the questionList
+    else {
+      setErrorMsg("");
+      setQuestionList((prevList) => [...prevList, newQuestion]);
+
+      // default to empty newQuestion
+      setNewQuestion({
+        questionTitle: "",
+        options: [{ optionContent: "Option", isCorrect: false }],
+        marks: -1,
+      });
+    }
+  }
+
+  // to handle deletion of a question
+  function handleDeleteQuestion(event) {
+    const questionId = event.target.getAttribute("questionid");
+
+    const newQuestionList = questionList;
+    newQuestionList.splice(questionId, 1);
+
+    setQuestionList(newQuestionList);
+  }
+
+  // to handle the update of quiz details
+  function handleSaveQuiz() {
+    const newQuiz = { ...quiz, questions: questionList };
+
+    if (newQuestion.questionTitle !== "")
+      setErrorMsg(
+        "The last question has not been added to the list of questions. EITHER click on the button above to add it to the list OR erase the question."
+      );
+    else {
+      // API call to update the quiz
+      axios
+        .patch(`http://localhost:8000/quizzes/${quiz._id}`, newQuiz)
+        .then(function (response) {
+          if (!response.data.success)
+            alert("Unable to update the quiz. Please try again later.");
+          else {
+            setSuccessMsgShow(true);
+            setTimeout(() => {
+              setSuccessMsgShow(false);
+            }, 1500);
+          }
+        })
+        .catch(function (err) {
+          console.log(err);
+          alert("Unable to update the quiz. Please try again later.");
+        });
+    }
   }
 
   return (
@@ -160,15 +235,20 @@ function EditQuiz() {
       )}
 
       {/* display question details for each question */}
-      {questionList.forEach((question, qId) => (
-        <EditQuestionBlock
-          qId={qId}
-          question={question}
-          handleQuestionDetailsChange={handleQuestionDetailsChange}
-          handleOptionDetailsChange={handleOptionDetailsChange}
-          addOptionHandler={addOptionHandler}
-          deleteOptionHandler={deleteOptionHandler}
-        />
+      {questionList.map((question, qId) => (
+        <div>
+          {console.log(question)}
+          <EditQuestionBlock
+            key={qId}
+            qId={qId}
+            question={question}
+            handleQuestionDetailsChange={handleQuestionDetailsChange}
+            handleOptionDetailsChange={handleOptionDetailsChange}
+            addOptionHandler={addOptionHandler}
+            deleteOptionHandler={deleteOptionHandler}
+            handleDeleteQuestion={handleDeleteQuestion}
+          />
+        </div>
       ))}
 
       {/* add an extra question block for new question */}
@@ -182,10 +262,18 @@ function EditQuiz() {
         handleAddQuestion={handleAddQuestion}
       />
 
-      <div className="text-end">
+      <p className="error w-50">{errorMsg}</p>
+
+      <div className="text-end my-5">
+        {successMsgShow && (
+          <p className="d-inline-block me-3 success">
+            ✔ Saved the quiz successfully.
+          </p>
+        )}
         <button
-          className="btn btn-primary btn-md px-4 me-5 mt-5 btn-blue"
+          className="btn btn-primary btn-md px-4 me-5 btn-blue"
           type="button"
+          onClick={handleSaveQuiz}
         >
           Save
         </button>

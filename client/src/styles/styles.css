@@ -72,13 +72,17 @@ h1.fst-italic {
   font-weight: 500;
 }
 
-/***************************Error Message**************************/
+/***************************Messages**************************/
 
 .error {
   color: #ff5151;
 }
 p.error {
   margin-bottom: 0;
+}
+
+.success {
+  color: #0caa49;
 }
 
 /***************************Buttons**************************/
@@ -199,6 +203,11 @@ tr:hover td {
 .add-option:hover {
   cursor: pointer;
   font-weight: 700;
+}
+
+hr {
+  background-color: #0090e4;
+  border: 1.5px solid #0090e4;
 }
 
 /***************************Modals**************************/

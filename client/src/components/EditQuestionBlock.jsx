@@ -3,20 +3,41 @@ import { Form, Row, Col } from "react-bootstrap";
 
 // Material UI icons
 import ClearIcon from "@mui/icons-material/Clear";
+import Button from "@mui/material/Button";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 function EditQuestionBlock(props) {
   return (
-    <Form onSubmit={props.qId === "-1" ? props.handleAddQuestion : ""}>
+    <Form onSubmit={props.qId === "-1" ? props.handleAddQuestion : () => ""}>
       {/* onSubmit handler only in case of a new question */}
 
       <Form.Group className="mb-3">
-        <Form.Label className="fs-5">
-          Question {props.qId > -1 ? props.qId : ""}
-        </Form.Label>
+        <Row className="mb-2">
+          <Col sm={10}>
+            <Form.Label className="fs-5">
+              Question {props.qId > -1 ? props.qId + 1 : ""}
+            </Form.Label>
+          </Col>
+          {props.qId !== "-1" && (
+            <Col className="text-end">
+              <Button
+                variant="outlined"
+                color="error"
+                startIcon={<DeleteIcon />}
+                questionid={props.qId}
+                onClick={props.handleDeleteQuestion}
+              >
+                Delete Question
+              </Button>
+            </Col>
+          )}
+        </Row>
+
         <Form.Control
           as="textarea"
           rows={3}
           name="questionTitle"
+          placeholder="Type your question here..."
           value={props.question.questionTitle}
           questionid={props.qId}
           onChange={props.handleQuestionDetailsChange}
@@ -78,7 +99,7 @@ function EditQuestionBlock(props) {
               name="marks"
               placeholder="Allot marks"
               value={props.question.marks > -1 ? props.question.marks : ""}
-              questionid="-1"
+              questionid={props.qId}
               onChange={props.handleQuestionDetailsChange}
             />
           </Form.Group>

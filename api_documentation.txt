@@ -72,7 +72,7 @@ Routes: [
     desc: fetch the details of quiz
   },
   {
-    path: "localhost:8000/quizzes/:quizID",
+    path: "localhost:8000/quizzes/:quizID", #00ff00
     method: PATCH,
     desc: update the quiz details
   },
