@@ -210,6 +210,15 @@ hr {
   border: 1.5px solid #0090e4;
 }
 
+/***************************Attemp Quiz**************************/
+
+.attempt-quiz-heading {
+  color: #ffffff;
+  background-color: #ff9b6a;
+  padding: 2rem 1rem;
+  border-radius: 10px;
+}
+
 /***************************Modals**************************/
 
 #contained-modal-title-deleteconfirmation {

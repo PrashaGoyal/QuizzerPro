@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Table, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import Cookies from "universal-cookie";
 
 // importing the axios package
@@ -94,13 +95,15 @@ function QuizzesStudent() {
                     : "--"}
                 </td>
                 <td>
-                  <Button
-                    variant="danger"
-                    className="btn-orange"
-                    disabled={studentDetails.quizzes[index].attempted}
-                  >
-                    Attempt
-                  </Button>
+                  <Link to={`/quizzes/${quiz.quizName}`} state={{ quiz: quiz }}>
+                    <Button
+                      variant="danger"
+                      className="btn-orange"
+                      disabled={studentDetails.quizzes[index].attempted}
+                    >
+                      Attempt
+                    </Button>
+                  </Link>
                 </td>
               </tr>
             ))}
