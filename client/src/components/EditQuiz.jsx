@@ -1,10 +1,12 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { Container, Form, Row, Col } from "react-bootstrap";
+import { Container } from "react-bootstrap";
+
+// importing react components
+import EditQuestionBlock from "./EditQuestionBlock";
 
 // Material UI icons
 import EditIcon from "@mui/icons-material/Edit";
-import ClearIcon from "@mui/icons-material/Clear";
 
 function EditQuiz() {
   // to access the data passed to the route
@@ -45,21 +47,35 @@ function EditQuiz() {
         ...prevQuestionDetails,
         [name]: value,
       }));
+    else {
+      let newQuestionList = questionList;
+      newQuestionList[questionId] = {
+        ...questionList[questionId],
+        [name]: value,
+      };
+
+      setQuestionList(newQuestionList);
+    }
   }
 
   // to handle option addition
   function addOptionHandler(event) {
     const questionId = event.target.getAttribute("questionid"); // gives the index in the question list
+    const newOption = { optionContent: "Option", isCorrect: false };
 
     // if the questionId is '-1', option has to be added to the new question
     if (questionId === "-1") {
-      const newOption = { optionContent: "Option", isCorrect: false };
       const newOptionList = [...newQuestion.options, newOption];
 
       setNewQuestion((prevQuestionDetails) => ({
         ...prevQuestionDetails,
         options: newOptionList,
       }));
+    } else {
+      let newQuestionList = questionList;
+      newQuestionList[questionId].options.push(newOption);
+
+      setQuestionList(newQuestionList);
     }
   }
 
@@ -77,6 +93,11 @@ function EditQuiz() {
         ...prevQuestionDetails,
         options: newOptionList,
       }));
+    } else {
+      let newQuestionList = questionList;
+      newQuestionList[questionId].options.splice(optionId, 1);
+
+      setQuestionList(newQuestionList);
     }
   }
 
@@ -86,25 +107,36 @@ function EditQuiz() {
     const optionId = event.target.getAttribute("optionid"); // gives the index of the option in the option list of the question
     const inputType = event.target.type;
 
+    let optionList;
+
     // if the questionId is '-1', the change is made in the new question
+    optionList =
+      questionId === "-1"
+        ? newQuestion.options
+        : questionList[questionId].options;
+
+    // make changes to the optionContent or the isCorrect attribute accordingly
+    if (inputType === "text")
+      optionList[optionId].optionContent = event.target.value;
+    else optionList[optionId].isCorrect = event.target.checked;
+
     if (questionId === "-1") {
-      let optionList = newQuestion.options;
-
-      // make changes to the optionContent or the isCorrect attribute accordingly
-      if (inputType === "text")
-        optionList[optionId].optionContent = event.target.value;
-      else optionList[optionId].isCorrect = event.target.checked;
-
       setNewQuestion((prevQuestionDetails) => ({
         ...prevQuestionDetails,
         options: optionList,
       }));
+    } else {
+      let newQuestionList = questionList;
+      newQuestionList[questionId].options = optionList;
+
+      setQuestionList(newQuestionList);
     }
   }
 
   // to handle addition of a question block
   function handleAddQuestion(event) {
-    console.log("add question");
+    event.preventDefault();
+    console.log(newQuestion);
   }
 
   return (
@@ -129,161 +161,26 @@ function EditQuiz() {
 
       {/* display question details for each question */}
       {questionList.forEach((question, qId) => (
-        <div key={qId}>
-          <Form>
-            <Form.Group className="mb-3">
-              <Form.Label className="fs-5">Question {qId}</Form.Label>
-              <Form.Control
-                as="textarea"
-                rows={3}
-                name="questionTitle"
-                value={question.questionTitle}
-                questionid={qId}
-                onChange={handleQuestionDetailsChange}
-              />
-            </Form.Group>
-
-            <Row>
-              <Col sm={10}>
-                <Form.Group className="w-75">
-                  <Form.Label className="fs-5">
-                    Answers{" "}
-                    <span className="fs-6">(tick the correct answers)</span>
-                  </Form.Label>
-
-                  {question.options.map((option, opId) => (
-                    <div key={opId} className="mb-2">
-                      <input
-                        type="checkbox"
-                        className="form-check-input d-inline-block mt-2 me-3"
-                        checked={option.isCorrect}
-                        questionid={qId}
-                        optionid={opId}
-                        onChange={handleOptionDetailsChange}
-                      />
-                      <input
-                        className="editable-value w-75 me-3"
-                        type="text"
-                        questionid={qId}
-                        optionid={opId}
-                        value={option.optionContent}
-                        onChange={handleOptionDetailsChange}
-                      />
-                      <ClearIcon
-                        questionid={qId}
-                        optionid={opId}
-                        onClick={deleteOptionHandler}
-                      />
-                    </div>
-                  ))}
-                  <div
-                    className="d-inline-block mt-2 add-option"
-                    questionid={qId}
-                    onClick={addOptionHandler}
-                  >
-                    + Add Option
-                  </div>
-                </Form.Group>
-              </Col>
-
-              <Col>
-                <Form.Group className="mb-3">
-                  <Form.Label className="">Marks:</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="marks"
-                    placeholder="Allot marks"
-                    value={question.marks}
-                    questionid="-1"
-                    onChange={handleQuestionDetailsChange}
-                  />
-                </Form.Group>
-              </Col>
-            </Row>
-          </Form>
-          <hr />
-        </div>
+        <EditQuestionBlock
+          qId={qId}
+          question={question}
+          handleQuestionDetailsChange={handleQuestionDetailsChange}
+          handleOptionDetailsChange={handleOptionDetailsChange}
+          addOptionHandler={addOptionHandler}
+          deleteOptionHandler={deleteOptionHandler}
+        />
       ))}
 
       {/* add an extra question block for new question */}
-      <Form onSubmit={handleAddQuestion}>
-        <Form.Group className="mb-3">
-          <Form.Label className="fs-5">Question</Form.Label>
-          <Form.Control
-            as="textarea"
-            rows={3}
-            name="questionTitle"
-            placeholder="Type the question here..."
-            value={newQuestion.questionTitle}
-            questionid="-1"
-            onChange={handleQuestionDetailsChange}
-          />
-        </Form.Group>
-
-        <Row>
-          <Col sm={10}>
-            <Form.Group className="w-75 d-inline-block">
-              <Form.Label className="fs-5">
-                Answers <span className="fs-6">(tick the correct answers)</span>
-              </Form.Label>
-
-              {newQuestion.options.map((option, opId) => (
-                <div key={opId} className="mb-2">
-                  <input
-                    type="checkbox"
-                    className="form-check-input d-inline-block mt-2 me-3"
-                    checked={option.isCorrect}
-                    questionid="-1"
-                    optionid={opId}
-                    onChange={handleOptionDetailsChange}
-                  />
-                  <input
-                    className="editable-value w-75 me-3"
-                    type="text"
-                    questionid="-1"
-                    optionid={opId}
-                    value={option.optionContent}
-                    onChange={handleOptionDetailsChange}
-                  />
-                  <ClearIcon
-                    questionid="-1"
-                    optionid={opId}
-                    onClick={deleteOptionHandler}
-                  />
-                </div>
-              ))}
-              <div
-                className="d-inline-block mt-2 add-option"
-                questionid="-1"
-                onClick={addOptionHandler}
-              >
-                + Add Option
-              </div>
-            </Form.Group>
-          </Col>
-
-          <Col>
-            <Form.Group className="mb-3">
-              <Form.Label className="">Marks:</Form.Label>
-              <Form.Control
-                type="text"
-                name="marks"
-                placeholder="Allot marks"
-                value={newQuestion.marks > -1 ? newQuestion.marks : ""}
-                questionid="-1"
-                onChange={handleQuestionDetailsChange}
-              />
-            </Form.Group>
-          </Col>
-        </Row>
-
-        <button
-          className="btn btn-danger btn-md px-4 me-2 mt-3 d-block btn-red"
-          type="submit"
-        >
-          Add question
-        </button>
-      </Form>
+      <EditQuestionBlock
+        qId="-1"
+        question={newQuestion}
+        handleQuestionDetailsChange={handleQuestionDetailsChange}
+        handleOptionDetailsChange={handleOptionDetailsChange}
+        addOptionHandler={addOptionHandler}
+        deleteOptionHandler={deleteOptionHandler}
+        handleAddQuestion={handleAddQuestion}
+      />
 
       <div className="text-end">
         <button
