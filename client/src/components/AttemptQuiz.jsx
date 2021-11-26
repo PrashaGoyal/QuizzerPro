@@ -109,6 +109,7 @@ function AttemptQuiz() {
         .then(function (response) {
           if (!response.data.success)
             alert("Unable to record your response. Please try again later.");
+          // show the thankyou msg if response recorded successfully.
           else setAttemptMsgShow(true);
         })
         .catch(function (err) {
@@ -124,6 +125,7 @@ function AttemptQuiz() {
         {quiz.quizName}
       </h1>
 
+      {/* show appropriate on successfully attempting quiz */}
       {attemptMsgShow ? (
         <Card bg="light" className="mb-3">
           <Card.Body>
@@ -166,6 +168,7 @@ function AttemptQuiz() {
               </Card.Body>
             </Card>
           ))}
+
           <div className="text-end my-5 me-3">
             <p className=" d-inline-block me-3 error">{errorMsg}</p>
 
