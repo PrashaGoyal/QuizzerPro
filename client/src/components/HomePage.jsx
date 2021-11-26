@@ -9,14 +9,14 @@ function HomePage() {
   return (
     <div>
       {/* Panel-1 */}
-      <div class="p-5">
+      <div className="p-5">
         <Row className="container-fluid">
           <Col className="p-5 d-flex align-items-center">
-            <div class="px-5">
-              <h1 class="display-5 fs-1 fst-italic">
+            <div className="px-5">
+              <h1 className="display-5 fs-1 fst-italic">
                 Create an awesome quiz in minutes
               </h1>
-              <p class="fs-5">
+              <p className="fs-5">
                 Simply create your own quiz above to get started for free.
                 Students login to the learning portal to access new quizzes.
               </p>
@@ -27,7 +27,7 @@ function HomePage() {
                 // If logged in, show this button
                 <Link to="/quizzes">
                   <button
-                    class="btn btn-secondary btn-md px-4 btn-red"
+                    className="btn btn-secondary btn-md px-4 btn-red"
                     type="button"
                   >
                     Get Going
@@ -38,7 +38,7 @@ function HomePage() {
                 <span>
                   <Link to="/signin">
                     <button
-                      class="btn btn-danger btn-md px-4 me-2 btn-red"
+                      className="btn btn-danger btn-md px-4 me-2 btn-red"
                       type="button"
                     >
                       Sign In
@@ -46,7 +46,7 @@ function HomePage() {
                   </Link>
                   <Link to="/signup">
                     <button
-                      class="btn btn-outline-danger btn-md px-4 ms-2 btn-red-outline"
+                      className="btn btn-outline-danger btn-md px-4 ms-2 btn-red-outline"
                       type="button"
                     >
                       Sign Up
@@ -71,7 +71,7 @@ function HomePage() {
 
       {/* Panel-2 */}
 
-      <div class="p-5 panel-1">
+      <div className="p-5 panel-1">
         <Row className="container-fluid">
           <Col className="p-5 d-flex align-items-center">
             <Image
@@ -82,9 +82,9 @@ function HomePage() {
           </Col>
 
           <Col className="p-5 d-flex align-items-center">
-            <div class="px-5">
-              <h1 class="display-5 fs-1 fst-italic">Auto Graded</h1>
-              <p class=" fs-5">
+            <div className="px-5">
+              <h1 className="display-5 fs-1 fst-italic">Auto Graded</h1>
+              <p className=" fs-5">
                 Students get to know there scores immediately after completing
                 the quiz. No hassle of manually checking the response.
               </p>

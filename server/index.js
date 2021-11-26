@@ -13,7 +13,9 @@ app.use(cors());
 // routes
 app.use("/", routes);
 
-mongoose.connect("mongodb://localhost:27017/QuizzerProDB");
+mongoose.connect(
+  "mongodb+srv://admin-prasha:Test-123@quizzerpro-cluster.qkfhm.mongodb.net/QuizzerProDB"
+);
 
 app.listen(8000, function () {
   console.log("Server started on port 8000.");
