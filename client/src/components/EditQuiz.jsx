@@ -58,7 +58,7 @@ function EditQuiz() {
         [name]: value,
       }));
     else {
-      let newQuestionList = questionList;
+      let newQuestionList = questionList.slice();
       newQuestionList[questionId] = {
         ...questionList[questionId],
         [name]: value,
@@ -82,7 +82,7 @@ function EditQuiz() {
         options: newOptionList,
       }));
     } else {
-      let newQuestionList = questionList;
+      let newQuestionList = questionList.slice();
       newQuestionList[questionId].options.push(newOption);
 
       setQuestionList(newQuestionList);
@@ -104,7 +104,7 @@ function EditQuiz() {
         options: newOptionList,
       }));
     } else {
-      let newQuestionList = questionList;
+      let newQuestionList = questionList.slice();
       newQuestionList[questionId].options.splice(optionId, 1);
 
       setQuestionList(newQuestionList);
@@ -136,7 +136,7 @@ function EditQuiz() {
         options: optionList,
       }));
     } else {
-      let newQuestionList = questionList;
+      let newQuestionList = questionList.slice();
       newQuestionList[questionId].options = optionList;
 
       setQuestionList(newQuestionList);
@@ -236,8 +236,6 @@ function EditQuiz() {
 
       {/* display question details for each question */}
       {questionList.map((question, qId) => (
-        <div>
-          {console.log(question)}
           <EditQuestionBlock
             key={qId}
             qId={qId}
@@ -248,7 +246,6 @@ function EditQuiz() {
             deleteOptionHandler={deleteOptionHandler}
             handleDeleteQuestion={handleDeleteQuestion}
           />
-        </div>
       ))}
 
       {/* add an extra question block for new question */}

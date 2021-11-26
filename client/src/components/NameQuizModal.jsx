@@ -71,6 +71,7 @@ function NameQuizModal(props) {
         {/* to take input the name of the quiz */}
         <input
           type="text"
+          id="quiz-name"
           className="form-control"
           placeholder="Quiz Name"
           name="quizName"

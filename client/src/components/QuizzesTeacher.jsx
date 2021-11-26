@@ -95,6 +95,8 @@ function QuizzesTeacher() {
 
     // hide the DeleteConfirmation Modal
     setDeleteConfirmationModalShow(false);
+    // reload the page
+    window.location.reload();
   }
 
   return (
@@ -183,7 +185,7 @@ function QuizzesTeacher() {
                     <DeleteOutlineIcon
                       onClick={() => {
                         setQuizIDToDelete(quiz._id); // since the quizID and quizName needs to be passed to the DeleteConfirmation Modal
-                        setQuizNameToDelete(quiz.quizName)
+                        setQuizNameToDelete(quiz.quizName);
                         setDeleteConfirmationModalShow(true);
                       }}
                     />
