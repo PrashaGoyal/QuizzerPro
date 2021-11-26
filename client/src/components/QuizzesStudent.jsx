@@ -64,7 +64,7 @@ function QuizzesStudent() {
 
   return (
     <Container fluid className="px-5">
-      <h1 class="display-5 fs-3 my-5 fst-italic">My Quizzes</h1>
+      <h1 className="display-5 fs-3 my-5 fst-italic">My Quizzes</h1>
 
       {/* if there is some error, display the msg; else render the table of quizzes */}
       {errorMsg ? (
@@ -95,7 +95,19 @@ function QuizzesStudent() {
                     : "--"}
                 </td>
                 <td>
-                  <Link to={`/quizzes/${quiz.quizName}`} state={{ quiz: quiz }}>
+                  <Link
+                    to={
+                      studentDetails.quizzes[index].attempted
+                        ? "#"
+                        : `/quizzes/${quiz.quizName}`
+                    }
+                    state={{ quiz: quiz }}
+                    className={
+                      studentDetails.quizzes[index].attempted
+                        ? "disabled"
+                        : undefined
+                    }
+                  >
                     <Button
                       variant="danger"
                       className="btn-orange"
