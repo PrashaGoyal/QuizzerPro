@@ -27,7 +27,7 @@ function SignIn() {
 
     // API call to login the user
     axios
-      .post("http://localhost:8000/users/signin", body)
+      .post("/api/users/signin", body)
       .then(function (res) {
         if (!res.data.success) setErrorMsg(res.data.message);
         else {

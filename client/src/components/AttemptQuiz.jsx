@@ -101,7 +101,7 @@ function AttemptQuiz() {
       // API call to update the quiz details particular to the student
       axios
         .patch(
-          `http://localhost:8000/students/${cookies.get("userName")}/quizzes/${
+          `/api/students/${cookies.get("userName")}/quizzes/${
             quiz._id
           }`,
           { score: score }

@@ -32,7 +32,7 @@ function QuizzesTeacher() {
   React.useEffect(() => {
     // get the quizIDs of quizzes created by the user
     axios
-      .get(`http://localhost:8000/teachers/${cookies.get("userName")}`)
+      .get(`/api/teachers/${cookies.get("userName")}`)
       .then(function (response) {
         if (!response.data.success) setErrorMsg("Unable to load quizzes.");
         else {
@@ -60,7 +60,7 @@ function QuizzesTeacher() {
 
     quizIDs.forEach((quizID) =>
       axios
-        .get(`http://localhost:8000/quizzes/${quizID}`)
+        .get(`/api/quizzes/${quizID}`)
         .then(function (response) {
           // update the quiz details array
           quizDetails.push(response.data.quiz);
@@ -81,7 +81,7 @@ function QuizzesTeacher() {
 
     // API call to delete the quiz
     axios
-      .delete(`http://localhost:8000/quizzes/${quizID}`)
+      .delete(`/api/quizzes/${quizID}`)
       .then(function (response) {
         if (!response.data.success)
           alert("Unable to delete the quiz. Please try again later.");

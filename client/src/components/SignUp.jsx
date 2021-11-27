@@ -29,7 +29,7 @@ function SignUp() {
 
     // API call to register the user
     axios
-      .post("http://localhost:8000/users/signup", body)
+      .post("/api/users/signup", body)
       .then(function (res) {
         if (!res.data.success) setErrorMsg(res.data.message);
         else {

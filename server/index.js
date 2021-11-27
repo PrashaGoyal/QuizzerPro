@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(cors());
 
 // routes
-app.use("/", routes);
+app.use("/api", routes);
 
 mongoose.connect(
   "mongodb+srv://admin-prasha:Test-123@quizzerpro-cluster.qkfhm.mongodb.net/QuizzerProDB"

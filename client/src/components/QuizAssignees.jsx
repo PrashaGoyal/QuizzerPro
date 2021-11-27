@@ -26,7 +26,7 @@ function QuizAssignees() {
   React.useEffect(() => {
     // API call to get the list of all students
     axios
-      .get("http://localhost:8000/students")
+      .get("/api/students")
       .then(function (response) {
         if (!response.data.success)
           setErrorMsg("Unable to fetch the student list.");
@@ -49,7 +49,7 @@ function QuizAssignees() {
     // API call to get the quiz details.
     // Note: On refreshing the page, 'quiz' gets set to 'location.state.quiz', which might not be the latest version of the quiz.
     axios
-      .get(`http://localhost:8000/quizzes/${quiz._id}`)
+      .get(`/api/quizzes/${quiz._id}`)
       .then(function (response) {
         if (!response.data.success)
           setErrorMsg("Unable to update the assignee list.");
@@ -71,7 +71,7 @@ function QuizAssignees() {
 
     // API call to add the student to the quiz assignee list
     axios
-      .post(`http://localhost:8000/quizzes/${quiz._id}/assignees`, {
+      .post(`/api/quizzes/${quiz._id}/assignees`, {
         assigneeUserName: studentUserName,
       })
       .then(function (response) {
@@ -95,7 +95,7 @@ function QuizAssignees() {
     // API call to remove the student from the quiz assignee list
     axios
       .delete(
-        `http://localhost:8000/quizzes/${quiz._id}/assignees/${studentUserName}`
+        `/api/quizzes/${quiz._id}/assignees/${studentUserName}`
       )
       .then(function (response) {
         if (!response.data.success)

@@ -17,7 +17,7 @@ function QuizzesStudent() {
   React.useEffect(() => {
     // get the quizIDs of quizzes assigned to the student
     axios
-      .get(`http://localhost:8000/students/${cookies.get("userName")}`)
+      .get(`/api/students/${cookies.get("userName")}`)
       .then(function (response) {
         if (!response.data.success) setErrorMsg("Unable to load quizzes.");
         else {
@@ -48,7 +48,7 @@ function QuizzesStudent() {
 
     quizzes.forEach((quiz) =>
       axios
-        .get(`http://localhost:8000/quizzes/${quiz.quizID}`)
+        .get(`/api/quizzes/${quiz.quizID}`)
         .then(function (response) {
           // update the quiz details array
           quizDetails.push(response.data.quiz);

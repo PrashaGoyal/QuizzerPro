@@ -196,7 +196,7 @@ function EditQuiz() {
     else {
       // API call to update the quiz
       axios
-        .patch(`http://localhost:8000/quizzes/${quiz._id}`, newQuiz)
+        .patch(`/api/quizzes/${quiz._id}`, newQuiz)
         .then(function (response) {
           if (!response.data.success)
             alert("Unable to update the quiz. Please try again later.");

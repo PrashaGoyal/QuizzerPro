@@ -28,7 +28,7 @@ function NameQuizModal(props) {
 
     // API call to create a quiz
     axios
-      .post("http://localhost:8000/quizzes", createQuizBody)
+      .post("/api/quizzes", createQuizBody)
       .then(function (response) {
         if (!response.data.success) setErrorMsg(response.data.message);
         else {

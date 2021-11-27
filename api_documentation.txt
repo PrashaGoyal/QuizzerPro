@@ -2,92 +2,92 @@ API Documentation
 
 Routes: [
   {
-    path: "localhost:8000/users/signup",
+    path: "localhost:8000/api/users/signup",
     method: POST,
     desc: register a new user
   },
   {
-    path: "localhost:8000/users/signin",
+    path: "localhost:8000/api/users/signin",
     method: POST,
     desc: login an existing user
   },
   {
-    path: "localhost:8000/teachers",
+    path: "localhost:8000/api/teachers",
     method: POST,
     desc: create a new teacher when a user signs up as a teacher
   },
   {
-    path: "localhost:8000/teachers/:teacherUserName",
+    path: "localhost:8000/api/teachers/:teacherUserName",
     method: GET,
     desc: get the details of a particular teacher
   },
   {
-    path: "localhost:8000/teachers/:teacherUserName/quizzes",
+    path: "localhost:8000/api/teachers/:teacherUserName/quizzes",
     method: POST,
     desc: add quiz to the teacher's document when quiz is created
   },
   {
-    path: "localhost:8000/teachers/:teacherUserName/quizzes/:quizID",
+    path: "localhost:8000/api/teachers/:teacherUserName/quizzes/:quizID",
     method: DELETE,
     desc: delete the quiz from the teacher's document
   },
   {
-    path: "localhost:8000/students",
+    path: "localhost:8000/api/students",
     method: GET,
     desc: to fetch the details of all students
   },
   {
-    path: "localhost:8000/students",
+    path: "localhost:8000/api/students",
     method: POST,
     desc: create a new student when a new user signs up as a student
   },
   {
-    path: "localhost:8000/students/:studentUserName",
+    path: "localhost:8000/api/students/:studentUserName",
     method: GET,
     desc: to fetch the details of a particular student
   }
   {
-    path: "localhost:8000/students/:studentUserName/quizzes",
+    path: "localhost:8000/api/students/:studentUserName/quizzes",
     method: POST,
     desc: add quiz to the student's document when the quiz is assigned
   },
   {
-    path: "localhost:8000/students/:studentUserName/quizzes/:quizID",
+    path: "localhost:8000/api/students/:studentUserName/quizzes/:quizID",
     method: DELETE,
     desc: delete the quiz from the student's document when the student is removed from the assignee list
   },
   {
-    path: "localhost:8000/students/:studentUserName/quizzes/:quizID",
+    path: "localhost:8000/api/students/:studentUserName/quizzes/:quizID",
     method: PATCH,
     desc: update the quiz details when the quiz is attempted by the student
   },
   {
-    path: "localhost:8000/quizzes",
+    path: "localhost:8000/api/quizzes",
     method: POST,
     desc: create a new quiz
   },
   {
-    path: "localhost:8000/quizzes/:quizID",
+    path: "localhost:8000/api/quizzes/:quizID",
     method: GET,
     desc: fetch the details of quiz
   },
   {
-    path: "localhost:8000/quizzes/:quizID",
+    path: "localhost:8000/api/quizzes/:quizID",
     method: PATCH,
     desc: update the quiz details
   },
   {
-    path: "localhost:8000/quizzes/:quizID",
+    path: "localhost:8000/api/quizzes/:quizID",
     method: DELETE,
     desc: delete the quiz
   },
   {
-    path: "localhost:8000/quizzes/:quizID/assignees",
+    path: "localhost:8000/api/quizzes/:quizID/assignees",
     method: POST,
     desc: add assignee to the quiz
   },
   {
-    path: "localhost:8000/quizzes/:quizID/assignees/:assigneeUserName",
+    path: "localhost:8000/api/quizzes/:quizID/assignees/:assigneeUserName",
     method: DELETE,
     desc: to remove the assignee from the quiz
   }
