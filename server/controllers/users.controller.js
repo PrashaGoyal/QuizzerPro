@@ -72,7 +72,7 @@ function createUser(req, res) {
 function createStudent(req, res) {
   console.log("************************************************************************************************called");
   axios
-    .post("/api/students", { userName: req.body.userName })
+    .post("https://quizzerpro.herokuapp.com/api/students", { userName: req.body.userName })
     .then(function (response) {
       if (!response.data.success) res.status(200).send(response.data);
       else return;
