@@ -47,7 +47,7 @@ function createQuiz(req, res) {
 // to add the quiz created to the author's document
 function addQuizToAuthor(req, res, createdQuizID) {
   axios
-    .post(`http://localhost:8000/api/teachers/${req.body.author}/quizzes`, {
+    .post(`/api/teachers/${req.body.author}/quizzes`, {
       quizID: createdQuizID,
     })
     .then(function (response) {
@@ -131,7 +131,7 @@ function addAssignee(req, res) {
 function addQuizToAssignee(req, res) {
   axios
     .post(
-      `http://localhost:8000/api/students/${req.body.assigneeUserName}/quizzes`,
+      `/api/students/${req.body.assigneeUserName}/quizzes`,
       { quizID: req.params.quizID }
     )
     .then(function (response) {
@@ -173,7 +173,7 @@ function removeAssignee(req, res) {
 function removeQuizFromAssignee(req, res) {
   axios
     .delete(
-      `http://localhost:8000/api/students/${req.params.assigneeUserName}/quizzes/${req.params.quizID}`
+      `/api/students/${req.params.assigneeUserName}/quizzes/${req.params.quizID}`
     )
     .then(function (response) {
       if (!response.data.success) res.status(200).send(response.data);
@@ -208,7 +208,7 @@ function deleteQuiz(req, res) {
 function deleteQuizFromAuthor(res, deletedQuiz) {
   axios
     .delete(
-      `http://localhost:8000/api/teachers/${deletedQuiz.author}/quizzes/${deletedQuiz._id}`
+      `/api/teachers/${deletedQuiz.author}/quizzes/${deletedQuiz._id}`
     )
     .then(function (response) {
       if (!response.data.success) res.status(200).send(response.data);
@@ -225,7 +225,7 @@ function deleteQuizFromAssignees(res, deletedQuiz) {
   deletedQuiz.assignedTo.forEach((assigneeUserName) => {
     axios
       .delete(
-        `http://localhost:8000/api/students/${assigneeUserName}/quizzes/${deletedQuiz._id}`
+        `/api/students/${assigneeUserName}/quizzes/${deletedQuiz._id}`
       )
       .then(function (response) {
         if (!response.data.success) res.status(200).send(response.data);
