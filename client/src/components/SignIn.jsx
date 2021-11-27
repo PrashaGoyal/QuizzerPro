@@ -47,15 +47,15 @@ function SignIn() {
   if (redirect) return <Navigate to="/" />;
 
   return (
-    <div class="text-center body">
-      <main class="form-signin">
+    <div className="text-center body">
+      <main className="form-signin">
         <form onSubmit={signInHandler}>
-          <h1 class="h3 mb-4 fw-bold">QuizzerPro</h1>
+          <h1 className="h3 mb-4 fw-bold">QuizzerPro</h1>
 
-          <div class="form-floating">
+          <div className="form-floating">
             <input
               type="email"
-              class="form-control"
+              className="form-control"
               id="email"
               placeholder="name@example.com"
               name="email"
@@ -63,10 +63,10 @@ function SignIn() {
             <label for="email">Email address</label>
           </div>
 
-          <div class="form-floating">
+          <div className="form-floating">
             <input
               type="password"
-              class="form-control"
+              className="form-control"
               id="password"
               placeholder="Password"
               name="password"
@@ -74,13 +74,13 @@ function SignIn() {
             <label for="password">Password</label>
           </div>
 
-          <p class="error">{errorMsg}</p>
+          <p className="error">{errorMsg}</p>
 
-          <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">
+          <button className="w-100 btn btn-lg btn-primary mt-3" type="submit">
             Sign In
           </button>
 
-          <p class="mt-2">
+          <p className="mt-2">
             Not registered yet? <Link to="/signup">Sign Up.</Link>
           </p>
         </form>

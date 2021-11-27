@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 
 function QuizzesStatic() {
   return (
-    <div class="p-5">
+    <div className="p-5">
       <Row className="container-fluid">
         <Col className="p-5 d-flex align-items-center">
-          <div class="px-5">
-            <h1 class="display-5 fs-1 fst-italic">Just One More Step!</h1>
-            <p class="fs-5">
+          <div className="px-5">
+            <h1 className="display-5 fs-1 fst-italic">Just One More Step!</h1>
+            <p className="fs-5">
               Sign In to QuizzerPro to create your own quiz or enjoy answering
               some of them.
               <span role="img" aria-label="wink emoji">
@@ -22,7 +22,7 @@ function QuizzesStatic() {
             {/* button redirecting to sign-in */}
             <Link to="/signin">
               <button
-                class="btn btn-danger btn-md px-4 me-2 btn-red"
+                className="btn btn-danger btn-md px-4 me-2 btn-red"
                 type="button"
               >
                 Sign In to Continue

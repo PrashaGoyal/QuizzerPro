@@ -188,9 +188,8 @@ function EditQuiz() {
   // to handle the update of quiz details
   function handleSaveQuiz() {
     // compute the total score
-    const newTotalScore = questionList.reduce(
-      (tot, question) => tot + question.marks
-    );
+    let newTotalScore = 0;
+    questionList.forEach((question) => (newTotalScore += question.marks));
 
     const newQuiz = {
       ...quiz,
@@ -207,9 +206,10 @@ function EditQuiz() {
       axios
         .patch(`/api/quizzes/${quiz._id}`, newQuiz)
         .then(function (response) {
-          if (!response.data.success)
-            alert("Unable to update the quiz. Please try again later.");
-          else {
+          if (!response.data.success) {
+            if (response.data.errCode) alert(response.data.message);
+            else alert("Unable to update the quiz. Please try again later.");
+          } else {
             setSuccessMsgShow(true);
             setTimeout(() => {
               setSuccessMsgShow(false);

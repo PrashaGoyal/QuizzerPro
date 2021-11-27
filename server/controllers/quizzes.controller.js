@@ -91,6 +91,7 @@ function updateQuiz(req, res) {
         if (err.code === 11000)
           res.status(200).send({
             success: false,
+            errCode: err.code,
             message:
               "This Quiz Name is already in use. Please choose a different name.",
           });

@@ -49,15 +49,15 @@ function SignUp() {
   if (redirect) return <Navigate to="/" />;
 
   return (
-    <div class="text-center body">
-      <main class="form-signup">
+    <div className="text-center body">
+      <main className="form-signup">
         <form onSubmit={signUpHandler}>
-          <h1 class="h3 mb-4 fw-bold">QuizzerPro</h1>
+          <h1 className="h3 mb-4 fw-bold">QuizzerPro</h1>
 
-          <div class="form-floating">
+          <div className="form-floating">
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               id="username"
               placeholder="xyz"
               name="userName"
@@ -65,10 +65,10 @@ function SignUp() {
             <label for="username">Username</label>
           </div>
 
-          <div class="form-floating">
+          <div className="form-floating">
             <input
               type="email"
-              class="form-control"
+              className="form-control"
               id="email"
               placeholder="name@example.com"
               name="email"
@@ -76,10 +76,10 @@ function SignUp() {
             <label for="email">Email address</label>
           </div>
 
-          <div class="form-floating">
+          <div className="form-floating">
             <input
               type="password"
-              class="form-control"
+              className="form-control"
               id="password"
               placeholder="Password"
               name="password"
@@ -87,9 +87,9 @@ function SignUp() {
             <label for="password">Password</label>
           </div>
 
-          <div class="form-floating">
+          <div className="form-floating">
             <select
-              class="form-select dropdown"
+              className="form-select dropdown"
               aria-label="Default select example"
               name="role"
             >
@@ -99,13 +99,13 @@ function SignUp() {
             </select>
           </div>
 
-          <p class="error">{errorMsg}</p>
+          <p className="error">{errorMsg}</p>
 
-          <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">
+          <button className="w-100 btn btn-lg btn-primary mt-3" type="submit">
             Sign Up
           </button>
 
-          <p class="mt-2">
+          <p className="mt-2">
             Already registered? <Link to="/signin">Sign In.</Link>
           </p>
         </form>
