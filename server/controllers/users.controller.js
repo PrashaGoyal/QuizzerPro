@@ -71,7 +71,9 @@ function createUser(req, res) {
 // to create a new entry in the "students" model
 function createStudent(req, res) {
   axios
-    .post("/api/students", { userName: req.body.userName })
+    .post("https://quizzerpro.herokuapp.com/api/students", {
+      userName: req.body.userName,
+    })
     .then(function (response) {
       if (!response.data.success) res.status(200).send(response.data);
       else return;
@@ -84,7 +86,9 @@ function createStudent(req, res) {
 // to create a new entry in the "teachers" model
 function createTeacher(req, res) {
   axios
-    .post("/api/teachers", { userName: req.body.userName })
+    .post("https://quizzerpro.herokuapp.com/api/teachers", {
+      userName: req.body.userName,
+    })
     .then(function (response) {
       if (!response.data.success) res.status(200).send(response.data);
       else return;

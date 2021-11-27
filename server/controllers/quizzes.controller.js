@@ -47,9 +47,12 @@ function createQuiz(req, res) {
 // to add the quiz created to the author's document
 function addQuizToAuthor(req, res, createdQuizID) {
   axios
-    .post(`/api/teachers/${req.body.author}/quizzes`, {
-      quizID: createdQuizID,
-    })
+    .post(
+      `https://quizzerpro.herokuapp.com/api/teachers/${req.body.author}/quizzes`,
+      {
+        quizID: createdQuizID,
+      }
+    )
     .then(function (response) {
       if (!response.data.success) res.status(200).send(response.data);
       else return;
@@ -131,7 +134,7 @@ function addAssignee(req, res) {
 function addQuizToAssignee(req, res) {
   axios
     .post(
-      `/api/students/${req.body.assigneeUserName}/quizzes`,
+      `https://quizzerpro.herokuapp.com/api/students/${req.body.assigneeUserName}/quizzes`,
       { quizID: req.params.quizID }
     )
     .then(function (response) {
@@ -173,7 +176,7 @@ function removeAssignee(req, res) {
 function removeQuizFromAssignee(req, res) {
   axios
     .delete(
-      `/api/students/${req.params.assigneeUserName}/quizzes/${req.params.quizID}`
+      `https://quizzerpro.herokuapp.com/api/students/${req.params.assigneeUserName}/quizzes/${req.params.quizID}`
     )
     .then(function (response) {
       if (!response.data.success) res.status(200).send(response.data);
@@ -208,7 +211,7 @@ function deleteQuiz(req, res) {
 function deleteQuizFromAuthor(res, deletedQuiz) {
   axios
     .delete(
-      `/api/teachers/${deletedQuiz.author}/quizzes/${deletedQuiz._id}`
+      `https://quizzerpro.herokuapp.com/api/teachers/${deletedQuiz.author}/quizzes/${deletedQuiz._id}`
     )
     .then(function (response) {
       if (!response.data.success) res.status(200).send(response.data);
@@ -225,7 +228,7 @@ function deleteQuizFromAssignees(res, deletedQuiz) {
   deletedQuiz.assignedTo.forEach((assigneeUserName) => {
     axios
       .delete(
-        `/api/students/${assigneeUserName}/quizzes/${deletedQuiz._id}`
+        `https://quizzerpro.herokuapp.com/api/students/${assigneeUserName}/quizzes/${deletedQuiz._id}`
       )
       .then(function (response) {
         if (!response.data.success) res.status(200).send(response.data);
