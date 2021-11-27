@@ -14,7 +14,7 @@ function NavBar() {
     cookies.remove("role", { path: "/" });
 
     // redirect to the home page
-    window.location.replace("http://localhost:3000/");
+    window.location.replace("/");
   }
 
   return (
