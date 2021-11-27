@@ -70,9 +70,8 @@ function createUser(req, res) {
 
 // to create a new entry in the "students" model
 function createStudent(req, res) {
-  console.log("************************************************************************************************called");
   axios
-    .post("https://quizzerpro.herokuapp.com/api/students", { userName: req.body.userName })
+    .post("/api/students", { userName: req.body.userName })
     .then(function (response) {
       if (!response.data.success) res.status(200).send(response.data);
       else return;
