@@ -187,7 +187,16 @@ function EditQuiz() {
 
   // to handle the update of quiz details
   function handleSaveQuiz() {
-    const newQuiz = { ...quiz, questions: questionList };
+    // compute the total score
+    const newTotalScore = questionList.reduce(
+      (tot, question) => tot + question.marks
+    );
+
+    const newQuiz = {
+      ...quiz,
+      questions: questionList,
+      totalScore: newTotalScore,
+    };
 
     if (newQuestion.questionTitle !== "")
       setErrorMsg(
@@ -236,16 +245,16 @@ function EditQuiz() {
 
       {/* display question details for each question */}
       {questionList.map((question, qId) => (
-          <EditQuestionBlock
-            key={qId}
-            qId={qId}
-            question={question}
-            handleQuestionDetailsChange={handleQuestionDetailsChange}
-            handleOptionDetailsChange={handleOptionDetailsChange}
-            addOptionHandler={addOptionHandler}
-            deleteOptionHandler={deleteOptionHandler}
-            handleDeleteQuestion={handleDeleteQuestion}
-          />
+        <EditQuestionBlock
+          key={qId}
+          qId={qId}
+          question={question}
+          handleQuestionDetailsChange={handleQuestionDetailsChange}
+          handleOptionDetailsChange={handleOptionDetailsChange}
+          addOptionHandler={addOptionHandler}
+          deleteOptionHandler={deleteOptionHandler}
+          handleDeleteQuestion={handleDeleteQuestion}
+        />
       ))}
 
       {/* add an extra question block for new question */}

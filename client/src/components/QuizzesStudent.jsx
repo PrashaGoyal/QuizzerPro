@@ -89,15 +89,16 @@ function QuizzesStudent() {
                 <td>{index + 1}</td>
                 <td>{quiz.quizName}</td>
                 <td>{quiz.author}</td>
-                
+
                 <td>
                   {studentDetails.quizzes[index].attempted
                     ? studentDetails.quizzes[index].score
-                    : "--"}
+                    : "--"}{" "}
+                  / {quiz.totalScore}
                 </td>
 
                 <td>
-                {/* disable the link if the student has attempted the quiz. */}
+                  {/* disable the link if the student has attempted the quiz. */}
                   <Link
                     to={
                       studentDetails.quizzes[index].attempted

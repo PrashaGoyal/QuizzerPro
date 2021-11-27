@@ -45,6 +45,10 @@ const quizSchema = new mongoose.Schema({
       },
     ],
   },
+  totalScore: {
+    type: Number,
+    required: true,
+  },
   assignedTo: {
     type: [String],
   },

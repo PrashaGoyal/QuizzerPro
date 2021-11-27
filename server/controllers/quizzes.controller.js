@@ -10,6 +10,7 @@ function createQuiz(req, res) {
   const newQuiz = {
     ...req.body,
     questions: [],
+    totalScore: 0,
     assignedTo: [],
   };
 

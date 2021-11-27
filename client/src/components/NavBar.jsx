@@ -1,14 +1,21 @@
 import React from "react";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Cookies from "universal-cookie";
 
 // Material UI icons
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 function NavBar() {
+  const navigate = useNavigate();
   const cookies = new Cookies();
 
+  // to handle SignIn link click
+  function signInClickHandler() {
+    navigate("../signin");
+  }
+
+  // to handle user signout
   function signOutHandler() {
     cookies.remove("userName", { path: "/" });
     cookies.remove("role", { path: "/" });
@@ -43,13 +50,15 @@ function NavBar() {
           title={<AccountCircleIcon fontSize="large" />}
           id="basic-nav-dropdown account-dropdown"
         >
-          <NavDropdown.Item>
-            {cookies.get("userName") ? (
-              <p onClick={signOutHandler}>Sign Out</p>
-            ) : (
-              <Link to="/signin">Sign In</Link>
-            )}
-          </NavDropdown.Item>
+          {cookies.get("userName") ? (
+            <NavDropdown.Item onClick={signOutHandler}>
+              Sign Out
+            </NavDropdown.Item>
+          ) : (
+            <NavDropdown.Item onClick={signInClickHandler}>
+              Sign In
+            </NavDropdown.Item>
+          )}
         </NavDropdown>
       </Container>
     </Navbar>
