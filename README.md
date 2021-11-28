@@ -32,7 +32,7 @@ A list of technologies used within the project:
 
 ## Demo
 
-Watch the demo video [here]().
+Watch the demo video [here](https://drive.google.com/file/d/1l_F3LlrzUdmEQ3DAHpJADFNsWTyG7aKL/view?usp=sharing).
 
 ## Run Locally
 
@@ -69,6 +69,6 @@ You can choose to test the application using the following pre-registered accoun
 1. Teacher Accounts- There are two teacher accounts with usernames 'teacher1' and 'teacher2'.
 2. Student Accounts- There are three student accounts with usernames 'student1', 'student2' and 'student3'.
 
-EmailIDs of these accounts: < username >@test.com
+Email-IDs of these accounts: < username >@test.com
 
 Password of these accounts: 0000
