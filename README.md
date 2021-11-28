@@ -8,10 +8,11 @@
 2. [Technologies](#technologies)
 3. [Demo](#demo)
 4. [Run Locally](#run-locally)
+5. [Test Accounts](#test-accounts)
 
 ## General Info
 
-A tool to aid online educaton by providing a platform to make and take quizzes.
+A tool to aid online education by providing a platform to make and take quizzes.
 
 The platform can be signed-up to using two roles, viz. a 'Teacher' and a 'Student'. A 'Teacher' gets to create/edit quizzes and assign them to stuents; and a 'Student' gets to attempt assigned quizzes and know his/her score immediately.
 
@@ -60,3 +61,14 @@ $ npm start
 ```
 
 It might take a few minutes for the site to show up. If not redirected automatically, open up your web browser and navigate to [localhost:3000](http://localhost:3000).
+
+## Test Accounts
+
+You can choose to test the application using the following pre-registered accounts:
+
+1. Teacher Accounts- There are two teacher accounts with usernames 'teacher1' and 'teacher2'.
+2. Student Accounts- There are three student accounts with usernames 'student1', 'student2' and 'student3'.
+
+EmailIDs of these accounts: < username >@test.com
+
+Password of these accounts: 0000
