@@ -7,15 +7,15 @@
 1. [General Info](#general-info)
 2. [Technologies](#technologies)
 3. [Demo](#demo)
-4. [Run Locally](#installation)
+4. [Run Locally](#run-locally)
 
-### General Info
+## General Info
 
 A tool to aid online educaton by providing a platform to make and take quizzes.
 
 The platform can be signed-up to using two roles, viz. a 'Teacher' and a 'Student'. A 'Teacher' gets to create/edit quizzes and assign them to stuents; and a 'Student' gets to attempt assigned quizzes and know his/her score immediately.
 
-### Technologies
+## Technologies
 
 A list of technologies used within the project:
 
@@ -29,11 +29,11 @@ A list of technologies used within the project:
 - [Bootstrap](https://getbootstrap.com/): Version 5.1.3
 - [Axios](https://axios-http.com/): Version 0.24.0
 
-### Demo
+## Demo
 
 Watch the demo video [here]().
 
-### Run Locally
+## Run Locally
 
 Follow the steps below to set up the app locally.
 
