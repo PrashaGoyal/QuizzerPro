@@ -14,7 +14,7 @@
 
 A tool to aid online education by providing a platform to make and take quizzes.
 
-The platform can be signed-up to using two roles, viz. a 'Teacher' and a 'Student'. A 'Teacher' gets to create/edit quizzes and assign them to stuents; and a 'Student' gets to attempt assigned quizzes and know his/her score immediately.
+The platform can be signed-up to using two roles, viz. a 'Teacher' and a 'Student'. A 'Teacher' gets to create/edit quizzes and assign them to students; and a 'Student' gets to attempt assigned quizzes and know his/her score immediately.
 
 ## Technologies
 
