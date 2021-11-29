@@ -52,7 +52,7 @@ $ npm install
 $ npm start
 ```
 
-3. Spin up the frontend:
+3. Spin up the frontend: Open up a new terminal in the location of the cloned repo and follow the commands below.
 
 ```sh
 $ cd client
